@@ -51,15 +51,15 @@
 % %\setfloatadjustment{bigderiv}{\hrule}
 
 % % %%%% Counters
-% % \renewcommand{\fnum@bigderiv}{\textbf{Derivation~\thebigderiv}}
-% % \renewcommand{\fnum@figure}{\textbf{\figurename~\thefigure}}
-% % \renewcommand{\fnum@table}{\textbf{\tablename~\thetable}}
-% % \renewcommand\@memmain@floats{%
-% %   \counterwithin{figure}{section}
-% %   \counterwithin{table}{section}
-% %   \counterwithin{bigderiv}{section}
-% % }
-% % \captiondelim{: }
+\renewcommand{\fnum@bigderiv}{\textbf{Derivation~\thebigderiv}}
+\renewcommand{\fnum@figure}{\textbf{\figurename~\thefigure}}
+\renewcommand{\fnum@table}{\textbf{\tablename~\thetable}}
+\renewcommand\@memmain@floats{%
+   \counterwithin{figure}{section}
+   \counterwithin{table}{section}
+   \counterwithin{bigderiv}{section}
+}
+\captiondelim{: }
 
 % %%%% Fonts
 
