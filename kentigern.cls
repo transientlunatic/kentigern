@@ -2,7 +2,7 @@
 \ProvidesClass{kentigern}[2016/04/06 v.0 A LaTeX document class for nice documents.]
 
 \PassOptionsToClass{\CurrentOption}{kentigern}
-\LoadClass[a4paper, openleft, 10pt]{memoir}
+\LoadClass[a4paper, openright, 10pt]{memoir}
 
  \usepackage{everypage}
  \usepackage{afterpage}
@@ -51,7 +51,6 @@
 % %\setfloatadjustment{bigderiv}{\hrule}
 
 % % %%%% Counters
-\renewcommand{\fnum@bigderiv}{\textbf{Derivation~\thebigderiv}}
 \renewcommand{\fnum@figure}{\textbf{\figurename~\thefigure}}
 \renewcommand{\fnum@table}{\textbf{\tablename~\thetable}}
 \renewcommand\@memmain@floats{%
@@ -77,75 +76,50 @@
 %%%% Declare some macros which get replaced later
 \let\Chaptername\null
 
-
-%%%% Page open commands
-
-\usepackage{ifthen}
-% \newcommand{\clearevenside}{
-%   \ifthenelse{\isodd{\thepage}}
-%   {
-%     \ifx\@currenvir{parcol}
-%        \switchcolumn*[1]
-%     \fi
-%     \clearpage
-%   }{
-%     \ifx\@currenvir{parcol}
-%        \switchcolumn*[1]
-%     \fi
-%     \clearpage
-%     This page was left blank intentionally.
-%     \phantom{placeholder}
-%     \thispagestyle{empty}
-%     \newpage
-%   }
-% }
-
-
-
 % %%%% Change how Parts be made
-% \let\printpartname\relax
-% \let\printpartnum\relax
-% \let\beforepartskip\relax
-% %\renewcommand\printparttitle{\null}
-% \let\Part\part
-%  \renewcommand\part[2][]{{%
-% %     \newpage
-% %     \let\clearpage\relax
-%      \cftaddtitleline{toc}{part}{#2}{}
-% %     \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
-%      %\addcontentsline{toc}{part}{#2}
-%      \providecommand{\Partname}{#2}
-% %     \if@twocolumn% true if twocolumn was being used
-% %     \twocolumn[
-% %     %\begin{minipage}{8cm}
-% %     \thispagestyle{part}
-% %     \ifx\relax#1\relax\Part{#2}
-% %     \vskip1cm
-% %     ]
-% %     \else
-% %        \Part[#1]{#2}
-% %     \fi%
-% %     %\end{minipage}
-% %     %\twocolumn
-% %     \else
-% %         \ifx\relax#1\relax\Part{#2}
-% %     \else
-% %        \Part[#1]{#2}
-% %     \fi%
-% %     \fi
-%  }
-%  }
-% \makeatletter
-% \newcommand{\beforepartskip}{\newpage\null}
-% \renewcommand*{\afterpartskip}{\par\@afterindentfalse\@afterheading}
-% \makeatother
-% \nopartblankpage
-% \renewcommand{\partnamefont}{\color{muted-green}\normalfont\huge\sffamily\raggedright}
-% \renewcommand{\partnumfont}{\color{muted-green}\normalfont\huge\sffamily\raggedright}
-% \renewcommand{\parttitlefont}{\color{muted-green}\normalfont\Huge\sffamily\raggedright}
+\let\printpartname\relax
+\let\printpartnum\relax
+\let\beforepartskip\relax
+%\renewcommand\printparttitle{\null}
+\let\Part\part
+ \renewcommand\part[2][]{{%
+%     \newpage
+%     \let\clearpage\relax
+     \cftaddtitleline{toc}{part}{#2}{}
+%     \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
+     %\addcontentsline{toc}{part}{#2}
+     \providecommand{\Partname}{#2}
+%     \if@twocolumn% true if twocolumn was being used
+%     \twocolumn[
+%     %\begin{minipage}{8cm}
+%     \thispagestyle{part}
+%     \ifx\relax#1\relax\Part{#2}
+%     \vskip1cm
+%     ]
+%     \else
+%        \Part[#1]{#2}
+%     \fi%
+%     %\end{minipage}
+%     %\twocolumn
+%     \else
+%         \ifx\relax#1\relax\Part{#2}
+%     \else
+%        \Part[#1]{#2}
+%     \fi%
+%     \fi
+ }
+ }
+\makeatletter
+\newcommand{\beforepartskip}{\newpage\null}
+\renewcommand*{\afterpartskip}{\par\@afterindentfalse\@afterheading}
+ \makeatother
+ \nopartblankpage
+\renewcommand{\partnamefont}{\color{muted-green}\normalfont\huge\sffamily\raggedright}
+ \renewcommand{\partnumfont}{\color{muted-green}\normalfont\huge\sffamily\raggedright}
+ \renewcommand{\parttitlefont}{\color{muted-green}\normalfont\Huge\sffamily\raggedright}
 
-\let\Chaptermark\chaptermark
-\def\chaptermark#1{\def\Chaptername{#1}}
+%\let\Chaptermark\chaptermark
+%\def\chaptermark#1{\def\Chaptername{#1}}
 % \let\Partmark\partmark
 % \def\partmark#1{\def\Partname{#1}\Partmark{#1}}
 
@@ -220,15 +194,14 @@
 % % The Pre-title hook changes the behaviour 
 % % of the rendering engine prior to setting the title.
 
-\pretitle{
-       \begingroup
-       \fontsize{2cm}{3.5cm}\selectfont
- }
+%\pretitle{%
+%       \begingroup
+%    \fontsize{2cm}{3.5cm}\selectfont
+%}%
 
- \posttitle{
-       \endgroup
-
- }
+% \posttitle{%
+%
+%}%
 
 % \preauthor{
 %   \vspace*{-.1cm}
@@ -243,35 +216,31 @@
 %    \begin{minipage}{\textwidth}
 %    \hfill
 %  }
-% \postdate{
-%   \end{minipage}
-%   \vspace*{0.2cm}
-%   \hrule
-%   \vspace*{0.2cm}
-%  }
+ %\postdate{
+ %  \newpage
+ % }
 
 % %%%% Part Headings
 
-% %\renewcommand{\beforepartskip}{\null}
-% \renewcommand{\afterpartskip}{\null}
+\renewcommand{\beforepartskip}{\null}
+\renewcommand{\afterpartskip}{\null}
 
 
 %%%% Chapter Headings
 \makechapterstyle{minimalist}{%
   \renewcommand*{\chapnamefont}{}
-  \renewcommand*{\chaptitlefont}{\fontsize{.75cm}{1cm}\selectfont \sffamily \scshape}
-  \renewcommand*{\chapnumfont}{\fontsize{5cm}{5.5cm}\selectfont \color{Maroon}\sffamily}
+  \renewcommand*{\chaptitlefont}{\fontsize{1.75cm}{2cm}\selectfont  \color{Maroon} \sffamily \scshape}
+  \renewcommand*{\chapnumfont}{\fontsize{5cm}{7cm}\selectfont \color{Maroon}\sffamily}
   \renewcommand*{\printchaptername}{}
   \setlength{\chapindent}{0pt}
   \renewcommand*{\afterchapternum}{}
   \addtolength{\chapindent}{0pt}
-  \renewcommand*{\printchapternum}{\chapnumfont \thechapter\space}
+  \renewcommand*{\printchapternum}{\chapnumfont \thechapter\space \\[2cm]}
   \renewcommand{\printchaptertitle}[1]{%
-    \\[2cm]
     \chaptitlefont
     \scshape ##1
-  }
-}
+  }%
+}%
 
 \chapterstyle{minimalist}
 \setlength\beforechapskip{1cm}
