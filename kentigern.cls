@@ -146,7 +146,7 @@
 
 \setheadfoot{2cm}{2cm}
 \setheaderspaces{*}{1.5cm}{*}
-\setmarginnotes{1.5cm}{6cm}{1cm}
+\setmarginnotes{6cm}{1.5cm}{1cm}
 
 
 \checkandfixthelayout
@@ -196,14 +196,14 @@
 % % The Pre-title hook changes the behaviour 
 % % of the rendering engine prior to setting the title.
 
-%\pretitle{%
-%       \begingroup
-%    \fontsize{2cm}{3.5cm}\selectfont
-%}%
+     \pretitle{%
+       \begingroup
+       \fontsize{1.5cm}{2cm}\selectfont
+}%
 
-% \posttitle{%
-%
-%}%
+\posttitle{%
+  \endgroup
+}%
 
 % \preauthor{
 %   \vspace*{-.1cm}
@@ -218,9 +218,9 @@
 %    \begin{minipage}{\textwidth}
 %    \hfill
 %  }
- %\postdate{
- %  \newpage
- % }
+\postdate{
+  \newpage
+}
 
 % %%%% Part Headings
 
@@ -233,29 +233,28 @@
   \chapterstyle{minimalist}%
   \renewcommand*{\chapnamefont}{}%
   \renewcommand*{\chaptitlefont}{%
-    \fontsize{1.5cm}{2.5cm}\selectfont%
-    \color{white}%
+    % \fontsize{1.5cm}{2.5cm}\selectfont%
+    \HUGE
     %\sffamily
   }
-  \renewcommand*{\precisfont}{\sffamily \color{white}}
-  \renewcommand*{\chapnumfont}{\fontsize{5cm}{7cm}\selectfont \color{white}\sffamily}
+  \renewcommand*{\precisfont}{\sffamily}
+  \renewcommand*{\chapnumfont}{\HUGE}
   \renewcommand*{\printchaptername}{}
   \settowidth{\chapindent}{\chapnumfont 999}
   \renewcommand*{\afterchapternum}{}
   \renewcommand*{\printchapternum}{
     \begin{tikzpicture}[overlay]
-      \draw (2cm, 2cm) node {\chapnumfont \thechapter\space};% \\[2cm]
+      \draw (2cm, 2cm) [below] node {\chapnumfont%
+        \thechapter\space};% \\[2cm]
     \end{tikzpicture}
   }
   \renewcommand{\printchaptertitle}[1]{%
     \begin{tikzpicture}[overlay]
-      \draw (8cm, 0cm) node [above, text width = \textwidth] {%
-        %
-        \noindent%
-        \begin{raggedright}%
-          \linespread{1.5}%
-          \textsc{\chaptitlefont ##1}%
-          \end{raggedright}%
+      \draw (10cm, 2cm) node [below, text width = 1.2\textwidth] {%
+        \begin{raggedleft}%
+          %\linespread{1.5}%
+          {\centering \noindent\chaptitlefont ##1}%
+          \end{raggedleft}%
       };% \\[2cm]
     \end{tikzpicture}
   }%
@@ -268,11 +267,10 @@
         \precisfont%
         \noindent%
         \begin{raggedright}%
-          \linespread{1.5}%
-          \textsc{#1}%
+          #1%
           \end{raggedright}%
-      };% \\[2cm]
-        \end{tikzpicture}
+        };
+    \end{tikzpicture}
 \postchapterprecis
 }%
 
@@ -284,7 +282,7 @@
 \def\postchapterprecis{\newpage}
 
 \def\afterchaptertitle{
-  \pagecolor{muted-green}\afterpage{\nopagecolor}
+  %\pagecolor{muted-green}\afterpage{\nopagecolor}
   %\newpage
   %\vspace{1cm}
 }
