@@ -4,9 +4,9 @@
 \PassOptionsToClass{\CurrentOption}{memoir}
 \LoadClass[a4paper, openleft, 10pt]{memoir}
 
- \usepackage{everypage}
- \usepackage{afterpage}
- \usepackage{titlesec}
+ % \usepackage{everypage}
+ % \usepackage{afterpage}
+ % \usepackage{titlesec}
  \usepackage{calc}
  \usepackage{microtype}
  \RequirePackage{xparse}
@@ -47,7 +47,6 @@
 
 
 
-
 % %%% The big derivation float
 % \newfloat[chapter]{bigderiv}{lod}{Derivation}
 % %\setfloatadjustment{bigderiv}{\hrule}
@@ -58,7 +57,7 @@
 \renewcommand\@memmain@floats{%
    \counterwithin{figure}{section}
    \counterwithin{table}{section}
-   \counterwithin{bigderiv}{section}
+   %\counterwithin{bigderiv}{section}
 }
 \captiondelim{: }
 
@@ -78,47 +77,47 @@
 %%%% Declare some macros which get replaced later
 \let\Chaptername\null
 
-% %%%% Change how Parts be made
-\let\printpartname\relax
-\let\printpartnum\relax
-\let\beforepartskip\relax
-%\renewcommand\printparttitle{\null}
-\let\Part\part
- \renewcommand\part[2][]{{%
-%     \newpage
-%     \let\clearpage\relax
-     \cftaddtitleline{toc}{part}{#2}{}
-%     \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
-     %\addcontentsline{toc}{part}{#2}
-     \providecommand{\Partname}{#2}
-%     \if@twocolumn% true if twocolumn was being used
-%     \twocolumn[
-%     %\begin{minipage}{8cm}
-%     \thispagestyle{part}
-%     \ifx\relax#1\relax\Part{#2}
-%     \vskip1cm
-%     ]
-%     \else
-%        \Part[#1]{#2}
-%     \fi%
-%     %\end{minipage}
-%     %\twocolumn
-%     \else
-%         \ifx\relax#1\relax\Part{#2}
-%     \else
-%        \Part[#1]{#2}
-%     \fi%
-%     \fi
- }
- }
-\makeatletter
-\newcommand{\beforepartskip}{\newpage\null}
-\renewcommand*{\afterpartskip}{\par\@afterindentfalse\@afterheading}
- \makeatother
- \nopartblankpage
-\renewcommand{\partnamefont}{\color{muted-green}\normalfont\huge\sffamily\raggedright}
- \renewcommand{\partnumfont}{\color{muted-green}\normalfont\huge\sffamily\raggedright}
- \renewcommand{\parttitlefont}{\color{muted-green}\normalfont\Huge\sffamily\raggedright}
+% % %%%% Change how Parts be made
+% \let\printpartname\relax
+% \let\printpartnum\relax
+% \let\beforepartskip\relax
+% %\renewcommand\printparttitle{\null}
+% \let\Part\part
+%  \renewcommand\part[2][]{{%
+% %     \newpage
+% %     \let\clearpage\relax
+%      \cftaddtitleline{toc}{part}{#2}{}
+% %     \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
+%      %\addcontentsline{toc}{part}{#2}
+%      \providecommand{\Partname}{#2}
+% %     \if@twocolumn% true if twocolumn was being used
+% %     \twocolumn[
+% %     %\begin{minipage}{8cm}
+% %     \thispagestyle{part}
+% %     \ifx\relax#1\relax\Part{#2}
+% %     \vskip1cm
+% %     ]
+% %     \else
+% %        \Part[#1]{#2}
+% %     \fi%
+% %     %\end{minipage}
+% %     %\twocolumn
+% %     \else
+% %         \ifx\relax#1\relax\Part{#2}
+% %     \else
+% %        \Part[#1]{#2}
+% %     \fi%
+% %     \fi
+%  }
+%  }
+% \makeatletter
+% \newcommand{\beforepartskip}{\newpage\null}
+% \renewcommand*{\afterpartskip}{\par\@afterindentfalse\@afterheading}
+%  \makeatother
+%  \nopartblankpage
+% \renewcommand{\partnamefont}{\color{muted-green}\normalfont\huge\sffamily\raggedright}
+%  \renewcommand{\partnumfont}{\color{muted-green}\normalfont\huge\sffamily\raggedright}
+%  \renewcommand{\parttitlefont}{\color{muted-green}\normalfont\Huge\sffamily\raggedright}
 
 %\let\Chaptermark\chaptermark
 %\def\chaptermark#1{\def\Chaptername{#1}}
@@ -134,20 +133,22 @@
 %\setstocksize{12in}{12in}
 %\settrimmedsize{6in}{12in}{*}
 
-\marginparmargin{inner}
-\sidebarmargin{inner}
-\setsidebars{1cm}{1.4\marginparwidth}{\onelineskip}%
-{0pt}{\normalsize\normalfont }{\textheight}
+\marginparmargin{outer}
+\sidebarmargin{outer}
+%\setsidebars{1cm}{1.0\marginparwidth}{\onelineskip}%
+%\setsidebars{1cm}{1.4\marginparwidth}{\onelineskip}%
+%{0pt}{\normalsize\normalfont }{\textheight}
 
-\settypeblocksize{8.75in}{4in}{*}
+\settypeblocksize{8.75in}{5in}{*}
 
-\setlrmargins{*}{2cm}{*}
+\setlrmargins{*}{3cm}{*}
+% \setlrmargins{*}{2cm}{*}
 \setulmarginsandblock{4cm}{*}{*}
-
+% \setulmarginsandblock{4cm}{*}{*}
 \setheadfoot{2cm}{2cm}
 \setheaderspaces{*}{1.5cm}{*}
-\setmarginnotes{6cm}{1.5cm}{1cm}
-
+%\setmarginnotes{3cm}{1.5cm}{1cm}
+% \setmarginnotes{6cm}{1.5cm}{1cm}
 
 \checkandfixthelayout
 
@@ -178,6 +179,11 @@
 \makeevenfoot{title}%
      {\null}{\null}{\null}%\vrule \quad \thepage}
 
+
+     \copypagestyle{kentigern}{plain}
+     \makeevenhead{kentigern}{\Chaptername}
+     
+     
 %%%% Automatic Title Generation Settings.
 
 
@@ -244,13 +250,13 @@
   \renewcommand*{\afterchapternum}{}
   \renewcommand*{\printchapternum}{
     \begin{tikzpicture}[overlay]
-      \draw (2cm, 2cm) [below] node {\chapnumfont%
+      \draw (0.5cm, 2.5cm) [below] node {\chapnumfont%
         \thechapter\space};% \\[2cm]
     \end{tikzpicture}
   }
   \renewcommand{\printchaptertitle}[1]{%
     \begin{tikzpicture}[overlay]
-      \draw (10cm, 2cm) node [below, text width = 1.2\textwidth] {%
+      \draw (1.5cm, 2cm) node [right, text width = 0.9\textwidth] {%
         \begin{raggedleft}%
           %\linespread{1.5}%
           {\centering \noindent\chaptitlefont ##1}%
@@ -291,3 +297,6 @@
   \newpage
 }
 
+\setsecnumformat{\csname #1secnumformat\endcsname}
+\newcommand\sectionsecnumformat{\thesection \quad | \quad}
+\newcommand\subsectionsecnumformat{\fbox{\enspace\thesubsection\enspace}\enspace}
