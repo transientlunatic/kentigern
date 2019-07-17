@@ -2,7 +2,7 @@
 \ProvidesClass{kentigern}[2016/04/06 v.0 A LaTeX document class for nice documents.]
 
 \PassOptionsToClass{\CurrentOption}{memoir}
-\LoadClass[a4paper, openleft, 10pt]{memoir}
+\LoadClass[a4paper, openleft, 11pt]{memoir}
 
  \usepackage{everypage}
  \usepackage{afterpage}
@@ -58,7 +58,7 @@
 \renewcommand\@memmain@floats{%
    \counterwithin{figure}{section}
    \counterwithin{table}{section}
-   \counterwithin{bigderiv}{section}
+   %\counterwithin{bigderiv}{section}
 }
 \captiondelim{: }
 
@@ -83,34 +83,34 @@
 \let\printpartnum\relax
 \let\beforepartskip\relax
 %\renewcommand\printparttitle{\null}
-\let\Part\part
- \renewcommand\part[2][]{{%
-%     \newpage
-%     \let\clearpage\relax
-     \cftaddtitleline{toc}{part}{#2}{}
-%     \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
-     %\addcontentsline{toc}{part}{#2}
-     \providecommand{\Partname}{#2}
-%     \if@twocolumn% true if twocolumn was being used
-%     \twocolumn[
-%     %\begin{minipage}{8cm}
-%     \thispagestyle{part}
-%     \ifx\relax#1\relax\Part{#2}
-%     \vskip1cm
-%     ]
-%     \else
-%        \Part[#1]{#2}
-%     \fi%
-%     %\end{minipage}
-%     %\twocolumn
-%     \else
-%         \ifx\relax#1\relax\Part{#2}
-%     \else
-%        \Part[#1]{#2}
-%     \fi%
-%     \fi
- }
- }
+% \let\Part\part
+%  \renewcommand\part[2][]{{%
+% %     \newpage
+% %     \let\clearpage\relax
+%      \cftaddtitleline{toc}{part}{#2}{}
+% %     \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
+%      %\addcontentsline{toc}{part}{#2}
+%      \providecommand{\Partname}{#2}
+% %     \if@twocolumn% true if twocolumn was being used
+% %     \twocolumn[
+% %     %\begin{minipage}{8cm}
+% %     \thispagestyle{part}
+% %     \ifx\relax#1\relax\Part{#2}
+% %     \vskip1cm
+% %     ]
+% %     \else
+% %        \Part[#1]{#2}
+% %     \fi%
+% %     %\end{minipage}
+% %     %\twocolumn
+% %     \else
+% %         \ifx\relax#1\relax\Part{#2}
+% %     \else
+% %        \Part[#1]{#2}
+% %     \fi%
+% %     \fi
+%  }
+%  }
 \makeatletter
 \newcommand{\beforepartskip}{\newpage\null}
 \renewcommand*{\afterpartskip}{\par\@afterindentfalse\@afterheading}
@@ -139,14 +139,14 @@
 \setsidebars{1cm}{1.4\marginparwidth}{\onelineskip}%
 {0pt}{\normalsize\normalfont }{\textheight}
 
-\settypeblocksize{8.75in}{4in}{*}
+\settypeblocksize{8.75in}{5.25in}{*}
 
 \setlrmargins{*}{2cm}{*}
 \setulmarginsandblock{4cm}{*}{*}
 
 \setheadfoot{2cm}{2cm}
 \setheaderspaces{*}{1.5cm}{*}
-\setmarginnotes{6cm}{1.5cm}{1cm}
+\setmarginnotes{1cm}{1.5cm}{1cm}
 
 
 \checkandfixthelayout
@@ -234,44 +234,40 @@
   \renewcommand*{\chapnamefont}{}%
   \renewcommand*{\chaptitlefont}{%
     % \fontsize{1.5cm}{2.5cm}\selectfont%
-    \HUGE
+    \Huge
     %\sffamily
   }
   \renewcommand*{\precisfont}{\sffamily}
-  \renewcommand*{\chapnumfont}{\HUGE}
+  \renewcommand*{\chapnumfont}{\fontsize{1.5cm}{2.5cm}\selectfont}
   \renewcommand*{\printchaptername}{}
   \settowidth{\chapindent}{\chapnumfont 999}
   \renewcommand*{\afterchapternum}{}
   \renewcommand*{\printchapternum}{
-    \begin{tikzpicture}[overlay]
-      \draw (2cm, 2cm) [below] node {\chapnumfont%
+    \begin{tikzpicture}[overlay, remember picture]
+      \draw (-2cm, 2cm) [below right] node (number) {\chapnumfont%
         \thechapter\space};% \\[2cm]
     \end{tikzpicture}
   }
   \renewcommand{\printchaptertitle}[1]{%
-    \begin{tikzpicture}[overlay]
-      \draw (10cm, 2cm) node [below, text width = 1.2\textwidth] {%
-        \begin{raggedleft}%
-          %\linespread{1.5}%
-          {\centering \noindent\chaptitlefont ##1}%
-          \end{raggedleft}%
+    \begin{tikzpicture}[overlay, remember picture]
+      \draw (1cm, 2cm) node [align = left, anchor = north west, text width = 0.8\textwidth] {%
+        % \linespread{1.5}%
+        {\chaptitlefont\noindent ##1}%
       };% \\[2cm]
     \end{tikzpicture}
   }%
 }%
-
+\renewcommand{\prechapterprecis}{\\[2cm]}
 \renewcommand{\chapterprecis}[1]{%
   \prechapterprecis
-  \begin{tikzpicture}[overlay]
-        \draw (4cm, -6cm) node [above, text width = 0.8\textwidth] {%
-        \precisfont%
-        \noindent%
-        \begin{raggedright}%
-          #1%
-          \end{raggedright}%
-        };
-    \end{tikzpicture}
-\postchapterprecis
+  \vspace{2cm}
+  \precisfont%
+  \noindent%
+  #1%
+  \\[1cm]
+  \hline
+  \rmfamily
+  \postchapterprecis
 }%
 
 \chapterstyle{kentigern}
