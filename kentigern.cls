@@ -136,17 +136,18 @@
 
 \marginparmargin{inner}
 \sidebarmargin{inner}
-\setsidebars{1cm}{1.4\marginparwidth}{\onelineskip}%
+
+\setsidebars{3cm}{1.4\marginparwidth}{\onelineskip}%
 {0pt}{\normalsize\normalfont }{\textheight}
 
 \settypeblocksize{8.75in}{5.25in}{*}
 
-\setlrmargins{*}{2cm}{*}
-\setulmarginsandblock{4cm}{*}{*}
+\setlrmarginsandblock{5cm}{3cm}{*}
+\setulmarginsandblock{4cm}{4cm}{*}
 
 \setheadfoot{2cm}{2cm}
 \setheaderspaces{*}{1.5cm}{*}
-\setmarginnotes{1cm}{1.5cm}{1cm}
+\setmarginnotes{1cm}{2.5cm}{1cm}
 
 
 \checkandfixthelayout
@@ -234,27 +235,30 @@
   \renewcommand*{\chapnamefont}{}%
   \renewcommand*{\chaptitlefont}{%
     % \fontsize{1.5cm}{2.5cm}\selectfont%
-    \Huge
+    %\Huge
+    \fontsize{30}{35}\selectfont
+    \baselineskip=35pt
+    \parskip=50pt
     %\sffamily
   }
   \renewcommand*{\precisfont}{\sffamily}
-  \renewcommand*{\chapnumfont}{\fontsize{1.5cm}{2.5cm}\selectfont}
+  \renewcommand*{\chapnumfont}{\fontsize{2.5cm}{2.5cm}\selectfont}
   \renewcommand*{\printchaptername}{}
   \settowidth{\chapindent}{\chapnumfont 999}
   \renewcommand*{\afterchapternum}{}
   \renewcommand*{\printchapternum}{
-    \begin{tikzpicture}[overlay, remember picture]
-      \draw (-2cm, 2cm) [below right] node (number) {\chapnumfont%
+    \begin{tikzpicture}[overlay]
+      \draw (-2cm, 0cm) [anchor = north west] node (number) {\chapnumfont%
         \thechapter\space};% \\[2cm]
-    \end{tikzpicture}
+    \end{tikzpicture}\\
   }
   \renewcommand{\printchaptertitle}[1]{%
-    \begin{tikzpicture}[overlay, remember picture]
-      \draw (1cm, 2cm) node [align = left, anchor = north west, text width = 0.8\textwidth] {%
+    \begin{tikzpicture}%[overlay, remember picture]
+      \draw (-2cm, -1cm) node [align = flush left, anchor = north west, text width = \textwidth] {%
         % \linespread{1.5}%
-        {\chaptitlefont\noindent ##1}%
+        {\chaptitlefont\noindent ##1 \par}%
       };% \\[2cm]
-    \end{tikzpicture}
+    \end{tikzpicture}\\
   }%
 }%
 \renewcommand{\prechapterprecis}{\\[2cm]}
