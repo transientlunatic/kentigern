@@ -2,7 +2,7 @@
 \ProvidesClass{kentigern}[2016/04/06 v.0 A LaTeX document class for nice documents.]
 
 \PassOptionsToClass{\CurrentOption}{memoir}
-\LoadClass[a4paper, openleft, 10pt]{memoir}
+\LoadClass[a4paper, openright, 12pt]{memoir}
 
  % \usepackage{everypage}
  % \usepackage{afterpage}
@@ -77,47 +77,47 @@
 %%%% Declare some macros which get replaced later
 \let\Chaptername\null
 
-% % %%%% Change how Parts be made
-% \let\printpartname\relax
-% \let\printpartnum\relax
-% \let\beforepartskip\relax
-% %\renewcommand\printparttitle{\null}
-% \let\Part\part
-%  \renewcommand\part[2][]{{%
-% %     \newpage
-% %     \let\clearpage\relax
-%      \cftaddtitleline{toc}{part}{#2}{}
-% %     \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
-%      %\addcontentsline{toc}{part}{#2}
-%      \providecommand{\Partname}{#2}
-% %     \if@twocolumn% true if twocolumn was being used
-% %     \twocolumn[
-% %     %\begin{minipage}{8cm}
-% %     \thispagestyle{part}
-% %     \ifx\relax#1\relax\Part{#2}
-% %     \vskip1cm
-% %     ]
-% %     \else
-% %        \Part[#1]{#2}
-% %     \fi%
-% %     %\end{minipage}
-% %     %\twocolumn
-% %     \else
-% %         \ifx\relax#1\relax\Part{#2}
-% %     \else
-% %        \Part[#1]{#2}
-% %     \fi%
-% %     \fi
-%  }
-%  }
-% \makeatletter
-% \newcommand{\beforepartskip}{\newpage\null}
-% \renewcommand*{\afterpartskip}{\par\@afterindentfalse\@afterheading}
-%  \makeatother
-%  \nopartblankpage
-% \renewcommand{\partnamefont}{\color{muted-green}\normalfont\huge\sffamily\raggedright}
-%  \renewcommand{\partnumfont}{\color{muted-green}\normalfont\huge\sffamily\raggedright}
-%  \renewcommand{\parttitlefont}{\color{muted-green}\normalfont\Huge\sffamily\raggedright}
+% %%%% Change how Parts be made
+\let\printpartname\relax
+\let\printpartnum\relax
+\let\beforepartskip\relax
+%\renewcommand\printparttitle{\null}
+\let\Part\part
+ \renewcommand\part[2][]{{%
+%     \newpage
+%     \let\clearpage\relax
+     \cftaddtitleline{toc}{part}{#2}{}
+%     \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
+     %\addcontentsline{toc}{part}{#2}
+     \providecommand{\Partname}{#2}
+%     \if@twocolumn% true if twocolumn was being used
+%     \twocolumn[
+%     %\begin{minipage}{8cm}
+%     \thispagestyle{part}
+%     \ifx\relax#1\relax\Part{#2}
+%     \vskip1cm
+%     ]
+%     \else
+%        \Part[#1]{#2}
+%     \fi%
+%     %\end{minipage}
+%     %\twocolumn
+%     \else
+%         \ifx\relax#1\relax\Part{#2}
+%     \else
+%        \Part[#1]{#2}
+%     \fi%
+%     \fi
+ }
+ }
+\makeatletter
+\newcommand{\beforepartskip}{\newpage\null}
+\renewcommand*{\afterpartskip}{\par\@afterindentfalse\@afterheading}
+ \makeatother
+ \nopartblankpage
+\renewcommand{\partnamefont}{\color{muted-green}\normalfont\huge\sffamily\raggedright}
+ \renewcommand{\partnumfont}{\color{muted-green}\normalfont\huge\sffamily\raggedright}
+ \renewcommand{\parttitlefont}{\color{muted-green}\normalfont\Huge\sffamily\raggedright}
 
 %\let\Chaptermark\chaptermark
 %\def\chaptermark#1{\def\Chaptername{#1}}
@@ -256,36 +256,35 @@
   }
   \renewcommand{\printchaptertitle}[1]{%
     \begin{tikzpicture}[overlay]
-      \draw (1.5cm, 2cm) node [right, text width = 0.9\textwidth] {%
-        \begin{raggedleft}%
+      \draw (1.5cm, 2cm) node [align=flush left, right, text width = 1.0\textwidth] {%
+        %\begin{raggedleft}%
           %\linespread{1.5}%
           {\centering \noindent\chaptitlefont ##1}%
-          \end{raggedleft}%
+          %\end{raggedleft}%
       };% \\[2cm]
     \end{tikzpicture}
   }%
 }%
 
-\renewcommand{\chapterprecis}[1]{%
+\providecommand{\precis}[1]{%
   \prechapterprecis
-  \begin{tikzpicture}[overlay]
-        \draw (4cm, -6cm) node [above, text width = 0.8\textwidth] {%
-        \precisfont%
-        \noindent%
-        \begin{raggedright}%
-          #1%
-          \end{raggedright}%
-        };
-    \end{tikzpicture}
-\postchapterprecis
-}%
+  % \begin{tikzpicture}[overlay]
+  %   \draw (5cm, -6cm) node [align=flush left, text width = 0.7\textwidth] {%
+  %     \precisfont%
+  {\noindent%
+  \small%
+  #1%
+  }%
+    %   };
+    % \end{tikzpicture}
+    \postchapterprecis
+}
 
 \chapterstyle{kentigern}
 %\setlength\beforechapskip{1cm}
 %\setlength{\prechapterprecisshift}{1cm}
-\def\prechapterprecis{
-  }
-\def\postchapterprecis{\newpage}
+\def\prechapterprecis{\precisfont\noindent}
+\def\postchapterprecis{\rmfamily\vspace{1.5cm}}
 
 \def\afterchaptertitle{
   %\pagecolor{muted-green}\afterpage{\nopagecolor}
