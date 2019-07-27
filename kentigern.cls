@@ -82,34 +82,34 @@
 \let\printpartnum\relax
 \let\beforepartskip\relax
 %\renewcommand\printparttitle{\null}
-\let\Part\part
- \renewcommand\part[2][]{{%
-%     \newpage
-%     \let\clearpage\relax
-     \cftaddtitleline{toc}{part}{#2}{}
-%     \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
-     %\addcontentsline{toc}{part}{#2}
-     \providecommand{\Partname}{#2}
-%     \if@twocolumn% true if twocolumn was being used
-%     \twocolumn[
-%     %\begin{minipage}{8cm}
-%     \thispagestyle{part}
-%     \ifx\relax#1\relax\Part{#2}
-%     \vskip1cm
-%     ]
-%     \else
-%        \Part[#1]{#2}
-%     \fi%
-%     %\end{minipage}
-%     %\twocolumn
-%     \else
-%         \ifx\relax#1\relax\Part{#2}
-%     \else
-%        \Part[#1]{#2}
-%     \fi%
-%     \fi
- }
- }
+% \let\Part\part
+%  \renewcommand\part[2][]{{%
+% %     \newpage
+% %     \let\clearpage\relax
+%      \cftaddtitleline{toc}{part}{#2}{}
+% %     \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
+%      %\addcontentsline{toc}{part}{#2}
+%      \providecommand{\Partname}{#2}
+% %     \if@twocolumn% true if twocolumn was being used
+% %     \twocolumn[
+% %     %\begin{minipage}{8cm}
+% %     \thispagestyle{part}
+% %     \ifx\relax#1\relax\Part{#2}
+% %     \vskip1cm
+% %     ]
+% %     \else
+% %        \Part[#1]{#2}
+% %     \fi%
+% %     %\end{minipage}
+% %     %\twocolumn
+% %     \else
+% %         \ifx\relax#1\relax\Part{#2}
+% %     \else
+% %        \Part[#1]{#2}
+% %     \fi%
+% %     \fi
+%  }
+%  }
 \makeatletter
 \newcommand{\beforepartskip}{\newpage\null}
 \renewcommand*{\afterpartskip}{\par\@afterindentfalse\@afterheading}
@@ -240,45 +240,44 @@
   \renewcommand*{\chapnamefont}{}%
   \renewcommand*{\chaptitlefont}{%
     % \fontsize{1.5cm}{2.5cm}\selectfont%
-    \HUGE
+    %\Huge
+    \fontsize{30}{35}\selectfont
+    \baselineskip=35pt
+    \parskip=50pt
     %\sffamily
   }
   \renewcommand*{\precisfont}{\sffamily}
-  \renewcommand*{\chapnumfont}{\HUGE}
+  \renewcommand*{\chapnumfont}{\fontsize{2.5cm}{2.5cm}\selectfont}
   \renewcommand*{\printchaptername}{}
   \settowidth{\chapindent}{\chapnumfont 999}
   \renewcommand*{\afterchapternum}{}
   \renewcommand*{\printchapternum}{
     \begin{tikzpicture}[overlay]
-      \draw (0.5cm, 2.5cm) [below] node {\chapnumfont%
+      \draw (-2cm, 0cm) [anchor = north west] node (number) {\chapnumfont%
         \thechapter\space};% \\[2cm]
-    \end{tikzpicture}
+    \end{tikzpicture}\\
   }
   \renewcommand{\printchaptertitle}[1]{%
-    \begin{tikzpicture}[overlay]
-      \draw (1.5cm, 2cm) node [align=flush left, right, text width = 1.0\textwidth] {%
-        %\begin{raggedleft}%
-          %\linespread{1.5}%
-          {\centering \noindent\chaptitlefont ##1}%
-          %\end{raggedleft}%
+    \begin{tikzpicture}%[overlay, remember picture]
+      \draw (-2cm, -1cm) node [align = flush left, anchor = north west, text width = \textwidth] {%
+        % \linespread{1.5}%
+        {\chaptitlefont\noindent ##1 \par}%
       };% \\[2cm]
-    \end{tikzpicture}
+    \end{tikzpicture}\\
   }%
 }%
-
-\providecommand{\precis}[1]{%
+\renewcommand{\prechapterprecis}{\\[2cm]}
+\renewcommand{\chapterprecis}[1]{%
   \prechapterprecis
-  % \begin{tikzpicture}[overlay]
-  %   \draw (5cm, -6cm) node [align=flush left, text width = 0.7\textwidth] {%
-  %     \precisfont%
-  {\noindent%
-  \small%
+  \vspace{2cm}
+  \precisfont%
+  \noindent%
   #1%
-  }%
-    %   };
-    % \end{tikzpicture}
-    \postchapterprecis
-}
+  \\[1cm]
+  \hline
+  \rmfamily
+  \postchapterprecis
+}%
 
 \chapterstyle{kentigern}
 %\setlength\beforechapskip{1cm}
