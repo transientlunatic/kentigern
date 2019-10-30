@@ -2,11 +2,11 @@
 \ProvidesClass{kentigern}[2016/04/06 v.0 A LaTeX document class for nice documents.]
 
 \PassOptionsToClass{\CurrentOption}{memoir}
-\LoadClass[a4paper, openleft, 11pt]{memoir}
+\LoadClass[a4paper, openright, 12pt]{memoir}
 
  \usepackage{everypage}
  \usepackage{afterpage}
- %\usepackage{titlesec}
+
  \usepackage{calc}
  \usepackage{microtype}
  \RequirePackage{xparse}
@@ -44,7 +44,6 @@
  
 
 % % 
-
 
 
 
@@ -134,21 +133,22 @@
 %\setstocksize{12in}{12in}
 %\settrimmedsize{6in}{12in}{*}
 
-\marginparmargin{inner}
-\sidebarmargin{inner}
+\marginparmargin{outer}
+\sidebarmargin{outer}
+%\setsidebars{1cm}{1.0\marginparwidth}{\onelineskip}%
+%\setsidebars{1cm}{1.4\marginparwidth}{\onelineskip}%
+%{0pt}{\normalsize\normalfont }{\textheight}
 
-\setsidebars{3cm}{1.4\marginparwidth}{\onelineskip}%
-{0pt}{\normalsize\normalfont }{\textheight}
+\settypeblocksize{8.75in}{5in}{*}
 
-\settypeblocksize{8.75in}{5.25in}{*}
-
-\setlrmarginsandblock{5cm}{3cm}{*}
-\setulmarginsandblock{4cm}{4cm}{*}
-
+\setlrmargins{*}{3cm}{*}
+% \setlrmargins{*}{2cm}{*}
+\setulmarginsandblock{4cm}{*}{*}
+% \setulmarginsandblock{4cm}{*}{*}
 \setheadfoot{2cm}{2cm}
 \setheaderspaces{*}{1.5cm}{*}
-\setmarginnotes{1cm}{2.5cm}{1cm}
-
+%\setmarginnotes{3cm}{1.5cm}{1cm}
+% \setmarginnotes{6cm}{1.5cm}{1cm}
 
 \checkandfixthelayout
 
@@ -179,6 +179,11 @@
 \makeevenfoot{title}%
      {\null}{\null}{\null}%\vrule \quad \thepage}
 
+
+     \copypagestyle{kentigern}{plain}
+     \makeevenhead{kentigern}{\Chaptername}
+     
+     
 %%%% Automatic Title Generation Settings.
 
 
@@ -277,9 +282,8 @@
 \chapterstyle{kentigern}
 %\setlength\beforechapskip{1cm}
 %\setlength{\prechapterprecisshift}{1cm}
-\def\prechapterprecis{
-  }
-\def\postchapterprecis{\newpage}
+\def\prechapterprecis{\precisfont\noindent}
+\def\postchapterprecis{\rmfamily\vspace{1.5cm}}
 
 \def\afterchaptertitle{
   %\pagecolor{muted-green}\afterpage{\nopagecolor}
@@ -291,3 +295,6 @@
   \newpage
 }
 
+\setsecnumformat{\csname #1secnumformat\endcsname}
+\newcommand\sectionsecnumformat{\thesection \quad | \quad}
+\newcommand\subsectionsecnumformat{\fbox{\enspace\thesubsection\enspace}\enspace}
