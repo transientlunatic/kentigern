@@ -6,7 +6,7 @@
 
  \usepackage{everypage}
  \usepackage{afterpage}
- \usepackage{titlesec}
+ %\usepackage{titlesec}
  \usepackage{calc}
  \usepackage{microtype}
  \RequirePackage{xparse}
