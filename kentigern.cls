@@ -2,7 +2,7 @@
 \ProvidesClass{kentigern}[2016/04/06 v.0 A LaTeX document class for nice documents.]
 
 \PassOptionsToClass{\CurrentOption}{memoir}
-\LoadClass[a4paper, openright, 12pt]{memoir}
+\LoadClass[a4paper, openright, 12pt, oldfontcommands]{memoir}
 
  \usepackage{everypage}
  \usepackage{afterpage}
@@ -273,10 +273,9 @@
   \precisfont%
   \noindent%
   #1%
-  \\[1cm]
-  \hline
   \rmfamily
   \postchapterprecis
+  \newpage
 }%
 
 \chapterstyle{kentigern}
