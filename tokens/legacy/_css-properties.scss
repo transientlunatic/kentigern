@@ -1,0 +1,95 @@
+// ================================================================
+// Kentigern Design System — CSS Custom Properties
+// ================================================================
+// Exports design tokens as CSS custom properties for runtime
+// theming (dark-mode toggle etc.).
+//
+// Import this AFTER Bootstrap so your custom properties win
+// over Bootstrap's own --bs-* variables where needed.
+//
+//   @import "bootstrap/scss/bootstrap";
+//   @import "kentigern-tokens/css-properties";  // <-- here
+// ================================================================
+
+// Light mode (default)
+:root {
+  --kn-primary:          #{$kn-primary};
+  --kn-primary-rgb:      #{$kn-primary-rgb};
+  --kn-secondary:        #{$kn-secondary};
+  --kn-secondary-rgb:    #{$kn-secondary-rgb};
+
+  --kn-parchment:        #{$kn-parchment};
+  --kn-stone:            #{$kn-stone};
+  --kn-slate-mid:        #{$kn-slate-mid};
+  --kn-ink:              #{$kn-ink};
+
+  // Semantic surface/text
+  --kn-bg:               #{$kn-parchment};
+  --kn-surface:          #ffffff;
+  --kn-text:             #{$kn-ink};
+  --kn-text-muted:       #{$kn-slate-mid};
+
+  // Links
+  --kn-link:             #{$kn-link-light};
+  --kn-link-visited:     #{$kn-link-light-visited};
+
+  // Extended palette
+  --kn-tan:              #{$kn-tan};
+  --kn-rust:             #{$kn-rust};
+  --kn-teal-bright:      #{$kn-teal-bright};
+  --kn-magenta:          #{$kn-magenta};
+  --kn-purple:           #{$kn-purple};
+  --kn-sky:              #{$kn-sky};
+  --kn-ice:              #{$kn-ice};
+  --kn-ocean:            #{$kn-ocean};
+
+  // Backwards-compat aliases (for existing Jekyll CSS using --kentigern-* names)
+  --kentigern-primary:              #{$kn-primary};
+  --kentigern-primary-translucent:  #{rgba($kn-primary, 0.7)};
+  --kentigern-link:                 #{$kn-link-light};
+  --kentigern-visited:              #{$kn-link-light-visited};
+
+  // Data-visualisation palette (see _tokens.scss). Charts read these; they switch with the theme.
+  --kn-cat-1: #{nth($kn-cat-light, 1)};  --kn-cat-2: #{nth($kn-cat-light, 2)};  --kn-cat-3: #{nth($kn-cat-light, 3)};
+  --kn-cat-4: #{nth($kn-cat-light, 4)};  --kn-cat-5: #{nth($kn-cat-light, 5)};  --kn-cat-6: #{nth($kn-cat-light, 6)};
+  --kn-cat-other: #{$kn-viz-neutral-light};
+  --kn-party-snp: var(--kn-cat-1);  --kn-party-con: var(--kn-cat-2);  --kn-party-ld: var(--kn-cat-3);
+  --kn-party-ref: var(--kn-cat-4);  --kn-party-grn: var(--kn-cat-5);  --kn-party-lab: var(--kn-cat-6);
+  --kn-party-other: var(--kn-cat-other);
+  // Chart furniture
+  --kn-viz-bg:      #fcfcfb;   --kn-viz-ink:   #0b0b0b;   --kn-viz-ink2:  #52514e;   --kn-viz-muted: #898781;
+  --kn-viz-grid:    #e1e0d9;   --kn-viz-axis:  #c3c2b7;   --kn-viz-ring:  rgba(11, 11, 11, .10);   --kn-viz-neutral: #f0efec;
+  // Semantic: positive/negative change, sequential single-hue, status
+  --kn-viz-pos: #e34948;   --kn-viz-neg: #2a78d6;   --kn-viz-seq: #184f95;   --kn-viz-good: #006300;   --kn-viz-warn: #b86e00;
+}
+
+// Dark mode — Bootstrap 5 data-bs-theme attribute
+[data-bs-theme="dark"],
+[data-theme="dark"] {
+  --kn-primary:          #{$kn-dark-primary};
+  --kn-bg:               #{$kn-dark-bg};
+  --kn-surface:          #{$kn-dark-surface};
+  --kn-text:             #{$kn-dark-text};
+  --kn-text-muted:       #{rgba($kn-dark-text, 0.6)};
+  --kn-link:             #{$kn-dark-link};
+  --kn-link-visited:     #{$kn-dark-link-visited};
+
+  // Backwards-compat aliases
+  --kentigern-primary:              #{$kn-dark-primary};
+  --kentigern-primary-translucent:  #{rgba($kn-dark-primary, 0.7)};
+  --kentigern-link:                 #{$kn-dark-link};
+  --kentigern-visited:              #{$kn-dark-link-visited};
+
+  // Data-visualisation palette, dark-surface steps
+  --kn-cat-1: #{nth($kn-cat-dark, 1)};  --kn-cat-2: #{nth($kn-cat-dark, 2)};  --kn-cat-3: #{nth($kn-cat-dark, 3)};
+  --kn-cat-4: #{nth($kn-cat-dark, 4)};  --kn-cat-5: #{nth($kn-cat-dark, 5)};  --kn-cat-6: #{nth($kn-cat-dark, 6)};
+  --kn-cat-other: #{$kn-viz-neutral-dark};
+  --kn-viz-bg:      #1A1E26;   --kn-viz-ink:   #f0efec;   --kn-viz-ink2:  #c3c2b7;   --kn-viz-muted: #898781;
+  --kn-viz-grid:    #2c313b;   --kn-viz-axis:  #3c4250;   --kn-viz-ring:  rgba(255, 255, 255, .10);   --kn-viz-neutral: #383d48;
+  --kn-viz-pos: #e66767;   --kn-viz-neg: #3987e5;   --kn-viz-seq: #6da7ec;   --kn-viz-good: #0ca30c;   --kn-viz-warn: #fab219;
+
+  // Override Bootstrap's RGB vars so text-bg-primary badges
+  // update correctly in dark mode (Bootstrap bakes these at compile time).
+  --bs-primary-rgb:      91, 184, 212;   // #5BB8D4
+  --bs-primary:          #{$kn-dark-primary};
+}

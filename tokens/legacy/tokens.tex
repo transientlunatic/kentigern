@@ -1,0 +1,68 @@
+% ================================================================
+% kentigern-tokens.tex
+% Kentigern Design System — LaTeX Colour & Typography Tokens
+% ================================================================
+%
+% Usage in preamble:
+%   \usepackage{xcolor}
+%   \input{kentigern-tokens}
+%
+% For hyperlinks (after \usepackage{hyperref}):
+%   \kentigernhypersetup
+%
+% For fonts (XeLaTeX/LuaLaTeX only, after \usepackage{fontspec}):
+%   \kentigernfonts
+%
+% ================================================================
+
+\RequirePackage{xcolor}
+
+% --- Core brand colours ---
+\definecolor{knPrimary}{HTML}{2D6A7F}       % Loch Teal
+\definecolor{knSecondary}{HTML}{962C26}     % Highland Rust
+
+% --- Warm neutrals ---
+\definecolor{knParchment}{HTML}{F4F2F0}     % Page background (warm off-white)
+\definecolor{knStone}{HTML}{D6D1CB}         % Mid-tone neutral
+\definecolor{knSlateMid}{HTML}{8A857E}      % Muted / meta text
+\definecolor{knInk}{HTML}{2C1E10}           % Body text (warm near-black)
+
+% --- Extended palette ---
+\definecolor{knTan}{HTML}{C59565}
+\definecolor{knRust}{HTML}{972702}
+\definecolor{knTealBright}{HTML}{14AD9C}
+\definecolor{knMagenta}{HTML}{9F0774}
+\definecolor{knLime}{HTML}{35EA86}
+\definecolor{knPurple}{HTML}{BD77DE}
+\definecolor{knSky}{HTML}{96BEFC}
+\definecolor{knIce}{HTML}{A3DEF0}
+\definecolor{knOcean}{HTML}{145B70}
+
+% --- Link colours ---
+\definecolor{knLink}{HTML}{2D6A7F}          % Same as primary
+\definecolor{knLinkVisited}{HTML}{1E4E5E}   % Darker teal
+
+% --- Hyperref setup (call after \usepackage{hyperref}) ---
+\newcommand{\kentigernhypersetup}{%
+  \hypersetup{%
+    colorlinks=true,%
+    linkcolor=knPrimary,%
+    urlcolor=knPrimary,%
+    citecolor=knSecondary,%
+    filecolor=knPrimary%
+  }%
+}
+
+% --- Font setup (call after \usepackage{fontspec}; XeLaTeX/LuaLaTeX only) ---
+% Requires Lato and Source Code Pro to be installed on the system.
+\newcommand{\kentigernfonts}{%
+  \setmainfont{Lato}[%
+    UprightFont    = *-Regular,%
+    BoldFont       = *-Bold,%
+    ItalicFont     = *-Italic,%
+    BoldItalicFont = *-BoldItalic,%
+    FontFace       = {lt}{n}{*-Light},%
+    FontFace       = {lt}{it}{*-LightItalic}%
+  ]%
+  \setmonofont{Source Code Pro}[Scale=MatchLowercase]%
+}

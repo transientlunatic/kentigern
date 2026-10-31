@@ -1,0 +1,26 @@
+<!-- @dsCard group="Charts" height=420 subtitle="Posterior median with 50% and 90% credible bands (illustrative shape)" -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&family=Lato:ital,wght@0,300;0,400;0,700;1,900&family=Source+Code+Pro:wght@400&display=swap">
+<style>
+body{margin:0;background:var(--surface);color:var(--ink);font-family:var(--font-sans)}
+.card{background:var(--surface-raised);border-radius:var(--radius-lg);padding:16px;margin:0;position:relative}
+.cap{font:400 14px/20px var(--font-sans);color:var(--ink-muted);margin:8px 0 0}
+svg text{font-family:var(--font-sans)}.wrap{padding:16px}
+.fc{font:400 16px/22px var(--font-serif);color:var(--ink)}.fc b{font-weight:700}
+</style></head><body><div class="wrap"><figure class="card" style="margin:0"><svg id="s" viewBox="0 0 720 320" width="100%" role="img" aria-label="A curve with 50 and 90 percent credible bands"></svg>
+<figcaption class="cap fc"><b>Figure 1:</b> Illustrative shape only: a curve with 50% and 90% credible bands, as on the astrophysical population slides. Not data.</figcaption></figure></div><script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script><script src="../../assets/Charts/kentigern-d3.js"></script><script>
+var K=Kentigern,W=720,H=320,m={t:16,r:16,b:40,l:52},svg=d3.select('#s');
+var x=d3.scaleLog().domain([5,100]).range([m.l,W-m.r]),y=d3.scaleLog().domain([1e-3,1e1]).range([H-m.b,m.t]);
+var xs=d3.range(0,1.0001,.02).map(t=>5*Math.pow(20,t));
+function med(v){return 3.2*Math.pow(v/8,-2.1)+1.2*Math.exp(-0.5*Math.pow((v-35)/5,2))}
+function w(v,k){return Math.exp(k*(0.35+0.5*Math.abs(Math.log(v/20))/Math.log(5)))}
+K.grid(svg.append('g').attr('transform','translate('+m.l+',0)').call(d3.axisLeft(y).ticks(30).tickSize(-(W-m.l-m.r)).tickFormat('')),{minor:true});
+K.grid(svg.append('g').attr('transform','translate('+m.l+',0)').call(d3.axisLeft(y).ticks(4,'~g').tickSize(-(W-m.l-m.r)).tickFormat('')));
+K.axis(svg.append('g').attr('transform','translate('+m.l+',0)').call(d3.axisLeft(y).ticks(4,'~g')),{noLine:true});
+K.axis(svg.append('g').attr('transform','translate(0,'+(H-m.b)+')').call(d3.axisBottom(x).tickValues([5,10,20,50,100]).tickFormat(d3.format('~g')).tickSizeOuter(0)));
+K.axisTitle(svg,'m\u2081 / M\u2609',(W+m.l)/2,H-6);
+function band(k,op){svg.append('path').datum(xs).attr('d',d3.area().x(d=>x(d)).y0(d=>y(Math.max(1e-3,med(d)/w(d,k)))).y1(d=>y(med(d)*w(d,k)))).attr('fill',K.css('blue')).attr('opacity',op)}
+band(1.0,.18);band(.45,.3);
+svg.append('path').datum(xs).attr('d',d3.line().x(d=>x(d)).y(d=>y(med(d)))).attr('fill','none').attr('stroke',K.css('blue')).attr('stroke-width',2.2).attr('stroke-linejoin','round').attr('stroke-linecap','round');
+svg.append('path').datum(xs).attr('d',d3.line().x(d=>x(d)).y(d=>y(2.6*Math.pow(d/8,-2.4)))).attr('fill','none').attr('stroke',K.css('grey')).attr('stroke-width',1.5).attr('stroke-dasharray','5 4');
+svg.append('text').attr('x',x(7)).attr('y',y(2.6*Math.pow(7/8,-2.4))+22).attr('font-size',11).attr('fill',K.css('grey')).text('reference');
+</script></body></html>

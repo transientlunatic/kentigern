@@ -1,0 +1,23 @@
+<!-- @dsCard height=320 -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&family=Lato:ital,wght@0,300;0,400;0,700;1,900&family=Source+Code+Pro:wght@400&display=swap">
+<style>
+body{margin:0;background:var(--surface)}svg{display:block;width:960px;height:320px}
+.gold{fill:var(--gold)}.blue{fill:var(--primary)}.red{fill:var(--red)}.green{fill:var(--green)}
+.arc{fill:none;stroke:var(--surface);stroke-width:3}
+.name{font:italic 400 88px/1 var(--font-serif);fill:var(--ink)}
+.tag{font:300 14px/1.4 var(--font-sans);fill:var(--ink-muted)}
+</style></head><body>
+<svg viewBox="0 0 960 320" role="img" aria-label="Kentigern design system">
+<!-- Derivation
+ blocks: gold 176x144, primary (teal) 144x144, red 128x176 (bleeds top right), green 64x64: radius-lg (8) on the first three, radius-sm (2) on the tile; identity hues, all at full value.
+ arrangement: staggered strips of unequal sizes starting at x=480, stepping down from the top left to the right edge.
+ pattern: concentric rings centred at (768,208), radii 48/80/112/144/176 (space-6 steps), ground-coloured cut-outs: gravitational-wave ripples, since this is a physicist's system.
+ scales: space-6 (32) step, radius-lg and radius-sm. -->
+<rect class="gold" x="480" y="32" width="176" height="144" rx="8"/>
+<rect class="blue" x="672" y="96" width="144" height="144" rx="8"/>
+<rect class="red" x="832" y="0" width="128" height="176" rx="8"/>
+<rect class="green" x="560" y="208" width="64" height="64" rx="2"/>
+<g aria-hidden="true"><circle class="arc" cx="768" cy="208" r="48"/><circle class="arc" cx="768" cy="208" r="80"/><circle class="arc" cx="768" cy="208" r="112"/><circle class="arc" cx="768" cy="208" r="144"/><circle class="arc" cx="768" cy="208" r="176"/></g>
+<text class="name" x="48" y="232">Kentigern</text>
+<text class="tag" x="52" y="276">Loch teal on parchment, italic serifs, honest charts.</text>
+</svg></body></html>

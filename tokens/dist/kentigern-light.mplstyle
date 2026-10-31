@@ -1,0 +1,38 @@
+# Kentigern matplotlib style (light): generated from tokens.json by build.py. Do not edit.
+# Use:  plt.style.use("kentigern-light.mplstyle")
+figure.facecolor: f4f2f0
+savefig.facecolor: f4f2f0
+savefig.dpi: 300
+axes.facecolor: f4f2f0
+axes.edgecolor: 8a857e
+axes.labelcolor: 6b665f
+axes.titlecolor: 2c1e10
+axes.linewidth: 0.8
+axes.spines.top: False
+axes.spines.right: False
+axes.grid: False
+axes.axisbelow: True
+axes.prop_cycle: cycler('color', ['eda100', '2a78d6', 'eb6834', '6250d6', '008300', 'e34948'])
+grid.color: bfd7ea
+grid.linewidth: 0.6
+text.color: 2c1e10
+xtick.color: 8a857e
+ytick.color: 8a857e
+xtick.labelcolor: 6b665f
+ytick.labelcolor: 6b665f
+xtick.direction: out
+ytick.direction: out
+xtick.major.size: 3.5
+ytick.major.size: 3.5
+lines.linewidth: 2.0
+lines.solid_capstyle: round
+lines.solid_joinstyle: round
+patch.linewidth: 0
+legend.frameon: False
+legend.labelcolor: 2c1e10
+font.family: sans-serif
+font.sans-serif: Lato, DejaVu Sans
+font.serif: EB Garamond, DejaVu Serif
+font.monospace: Source Code Pro, DejaVu Sans Mono
+font.size: 10
+mathtext.fontset: stix

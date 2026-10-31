@@ -1,0 +1,1 @@
+`cone.svg`: the Wellington-statue traffic cone, drawn for dark grounds with fixed colours: body in `orange` (#D95926), stripes in `ink` (#F0EFEC), base in `border-strong` (#6A778C). Use it only beside the coordinates on the thanks slide, at about 18px wide, because an image cannot inherit text colour.

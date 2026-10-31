@@ -1,0 +1,27 @@
+<!-- @dsCard group="Slides" height=540 width=960 subtitle="Table with current row highlighted" -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&family=Lato:ital,wght@0,300;0,400;0,700;1,900&family=Source+Code+Pro:wght@400&display=swap">
+<style>
+body{margin:0;background:var(--surface);color:var(--ink);font-family:var(--font-sans)}
+.s{width:960px;height:540px;box-sizing:border-box;position:relative;overflow:hidden;background:var(--surface);color:var(--ink);padding:48px}
+/* 1920px slide drawn at 0.5 scale */
+.h1{font:italic 400 32px/36px var(--font-serif);margin:0}
+.body{font:300 20px/28px var(--font-sans)}
+.ref{font:400 13px/17px var(--font-mono);color:var(--ink-muted);position:absolute;right:48px;bottom:32px}
+.num{font:400 13px/17px var(--font-mono);color:var(--ink-muted);position:absolute;right:48px;bottom:32px}
+
+table{border-collapse:collapse;margin-top:24px;width:100%;font:400 18px/26px var(--font-sans)}
+th{font:300 18px/26px var(--font-sans);color:var(--ink-muted);text-align:left;padding:4px 16px}
+td{padding:4px 16px}th.n,td.n{text-align:right;font-variant-numeric:tabular-nums}
+tr.cur td{background:var(--gold);color:var(--on-gold);font-weight:700}
+tr.cur td:first-child{border-radius:4px 0 0 4px}tr.cur td:last-child{border-radius:0 4px 4px 0}
+
+</style></head><body><div class="s" data-theme="dark"><h1 class="h1">O1 – O4 scorecard</h1>
+<table><thead><tr><th>Observing run</th><th>Catalogue update</th><th class="n">BBH</th><th class="n">NSBH</th><th class="n">BNS</th></tr></thead><tbody>
+<tr><td>O1</td><td>GWTC-1.0</td><td class="n">3</td><td class="n">0</td><td class="n">0</td></tr>
+<tr><td>O2</td><td>GWTC-1.0</td><td class="n">7</td><td class="n">0</td><td class="n">1</td></tr>
+<tr><td>O3a</td><td>GWTC-2.1</td><td class="n">42</td><td class="n">2</td><td class="n">1</td></tr>
+<tr><td>O3b</td><td>GWTC-3.0</td><td class="n">31</td><td class="n">4</td><td class="n">0</td></tr>
+<tr><td>O4a</td><td>GWTC-4.0</td><td class="n">128</td><td class="n">2</td><td class="n">0</td></tr>
+<tr class="cur"><td>O4b</td><td>GWTC-5.0</td><td class="n">161</td><td class="n">0</td><td class="n">0</td></tr>
+<tr><td>O4c</td><td>GWTC-6.0</td><td class="n">2*</td><td class="n">–</td><td class="n">–</td></tr></tbody></table>
+<span class="ref" style="left:48px;right:auto">* So far, from special event papers</span><span class="num">9</span></div></body></html>

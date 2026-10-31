@@ -1,0 +1,67 @@
+// ================================================================
+// Kentigern Design System — Bootstrap 5 Variable Overrides
+// ================================================================
+// Import this AFTER _tokens.scss but BEFORE Bootstrap itself.
+//
+//   @import "kentigern-tokens/tokens";
+//   @import "kentigern-tokens/bootstrap-overrides";  // <-- here
+//   @import "bootstrap/scss/bootstrap";
+// ================================================================
+
+// Brand
+$primary:                  $kn-primary;
+$secondary:                $kn-secondary;
+$success:                  $kn-teal-bright;
+$info:                     $kn-ice;
+$warning:                  $kn-tan;
+$danger:                   $kn-rust;
+
+// Body
+$body-bg:                  $kn-parchment;
+$body-color:               $kn-ink;
+
+// Links
+$link-color:               $kn-link-light;
+$link-decoration:          none;
+$link-hover-decoration:    underline;
+
+// Typography
+$font-family-sans-serif:   $kn-font-sans;
+$font-family-monospace:    $kn-font-mono;
+$headings-font-family:     $kn-font-sans;
+$headings-font-weight:     400;
+
+// Lato weight map
+$font-weight-lighter:      100;
+$font-weight-light:        300;
+$font-weight-normal:       400;
+$font-weight-semibold:     700;
+$font-weight-bold:         700;
+$font-weight-bolder:       900;
+
+// Border radius (subtle — not obviously Bootstrap)
+$border-radius:            $kn-radius-md;
+$border-radius-sm:         $kn-radius-sm;
+$border-radius-lg:         $kn-radius-lg;
+$border-radius-xl:         0.75rem;
+$border-radius-pill:       50rem;
+
+// Cards
+$card-bg:                  #ffffff;
+$card-border-color:        $kn-stone;
+$card-border-radius:       $kn-radius-md;
+
+// Navbar
+$navbar-light-color:       rgba($kn-ink, 0.75);
+$navbar-light-active-color: $kn-ink;
+
+// Nav
+$nav-link-color:           $kn-link-light;
+$nav-link-hover-color:     darken($kn-link-light, 10%);
+
+// Pagination
+$pagination-active-bg:     $kn-primary;
+$pagination-active-border-color: $kn-primary;
+
+// Code
+$code-color:               $kn-secondary;

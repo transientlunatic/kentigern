@@ -1,0 +1,75 @@
+// ================================================================
+// Kentigern Design System — Core Tokens
+// ================================================================
+// This file defines all design tokens as SCSS variables.
+// It has NO dependency on Bootstrap or any framework.
+//
+// Usage:
+//   @import "kentigern-tokens/tokens";
+//   @import "kentigern-tokens/bootstrap-overrides";  // optional
+//   @import "bootstrap/scss/bootstrap";
+//   @import "kentigern-tokens/css-properties";       // optional
+// ================================================================
+
+// === Core brand colours ===
+$kn-primary:           #2D6A7F;   // Loch Teal
+$kn-primary-rgb:       45, 106, 127;
+$kn-secondary:         #962C26;   // Highland Rust
+$kn-secondary-rgb:     150, 44, 38;
+
+// === Warm neutrals ===
+$kn-parchment:         #F4F2F0;   // Page background (warm off-white)
+$kn-stone:             #D6D1CB;   // Mid-tone neutral (borders, dividers)
+$kn-slate-mid:         #8A857E;   // Muted / meta text
+$kn-ink:               #2C1E10;   // Body text (warm near-black)
+
+// === Extended palette (data vis, status badges, tags) ===
+$kn-tan:               #C59565;   // Warm tan
+$kn-rust:              #972702;   // Rust red
+$kn-teal-bright:       #14AD9C;   // Bright teal (success)
+$kn-magenta:           #9F0774;   // Magenta
+$kn-lime:              #35EA86;   // Lime green
+$kn-purple:            #BD77DE;   // Lavender purple
+$kn-sky:               #96BEFC;   // Sky blue
+$kn-ice:               #A3DEF0;   // Ice blue (info)
+$kn-ocean:             #145B70;   // Ocean deep
+
+// === Semantic link colours ===
+$kn-link-light:          $kn-primary;
+$kn-link-light-visited:  #1E4E5E;
+
+// === Dark mode palette ===
+$kn-dark-bg:             #0E1521;   // Page background (dark)
+$kn-dark-surface:        #1A2130;   // Card / panel surface (dark)
+$kn-dark-text:           #A1A69C;   // Body text (dark)
+$kn-dark-primary:        #5BB8D4;   // Loch Teal — lightened for dark bg
+$kn-dark-link:           #BE81F0;   // Lavender purple (established across both repos)
+$kn-dark-link-visited:   #A06DC9;   // Darker purple for visited
+
+// === Typography ===
+$kn-font-sans:    "Lato", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+$kn-font-serif:   "EB Garamond", Georgia, "Times New Roman", serif;
+$kn-font-mono:    "Source Code Pro", SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+$kn-font-numeric: "Nova Mono", monospace;   // numerical/data display
+
+// === Spacing reference scale ===
+$kn-space-xs:  0.25rem;
+$kn-space-sm:  0.5rem;
+$kn-space-md:  1rem;
+$kn-space-lg:  2rem;
+$kn-space-xl:  4rem;
+
+// === Border radius ===
+$kn-radius-sm: 0.125rem;
+$kn-radius-md: 0.25rem;
+$kn-radius-lg: 0.5rem;
+
+// === Data-visualisation palette ===
+// Six categorical hues in a fixed order (cat-1..6), each with a light-surface and a dark-surface step. Validated for
+// colour-vision-deficiency separation on both surfaces; light mode has two known WARN results (adjacent-pair CVD 7.2 and
+// the yellow's 2.2:1 contrast), so charts must also carry direct labels, a legend, distinct marker shapes and a table view.
+// Order: SNP, Con, LD, Ref, Grn, Lab (the party aliases below are the same colours).
+$kn-cat-light: (#eda100, #2a78d6, #eb6834, #6250d6, #008300, #e34948);
+$kn-cat-dark:  (#c98500, #3987e5, #d95926, #9085e9, #008300, #e66767);
+$kn-viz-neutral-light: #898781;      // "Other" / unassigned series
+$kn-viz-neutral-dark:  #898781;

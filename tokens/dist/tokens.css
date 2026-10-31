@@ -1,0 +1,209 @@
+/* Kentigern: generated from tokens.json by build.py. Do not edit. */
+:root, [data-theme="light"] {
+  --surface: #f4f2f0;
+  --surface-raised: #ffffff;
+  --panel: #ffffff;
+  --on-panel: #2c1e10;
+  --ink: #2c1e10;
+  --ink-muted: #6b665f;
+  --ink-subtle: #8a857e;
+  --rule: #d6d1cb;
+  --border-strong: #8a857e;
+  --grid-fine: #bfd7ea;
+  --primary: #2d6a7f;
+  --on-primary: #ffffff;
+  --secondary: #962c26;
+  --on-secondary: #ffffff;
+  --link: #2d6a7f;
+  --link-visited: #1e4e5e;
+  --focus: #2d6a7f;
+  --tan: #c59565;
+  --rust: #972702;
+  --teal-bright: #14ad9c;
+  --magenta: #9f0774;
+  --lime: #35ea86;
+  --purple: #bd77de;
+  --sky: #96befc;
+  --ice: #a3def0;
+  --ocean: #145b70;
+  --cat-1: #eda100;
+  --cat-2: #2a78d6;
+  --cat-3: #eb6834;
+  --cat-4: #6250d6;
+  --cat-5: #008300;
+  --cat-6: #e34948;
+  --cat-other: #898781;
+  --gold: #eda100;
+  --blue: #2a78d6;
+  --orange: #eb6834;
+  --indigo: #6250d6;
+  --green: #008300;
+  --red: #e34948;
+  --grey: #898781;
+  --on-gold: #2c1e10;
+  --on-blue: #ffffff;
+  --on-orange: #2c1e10;
+  --on-indigo: #ffffff;
+  --on-green: #ffffff;
+  --on-red: #2c1e10;
+  --run-o1: #e34948;
+  --run-o2: #eb6834;
+  --run-o3a: #6250d6;
+  --run-o3b: #2a78d6;
+  --run-o4a: #eda100;
+  --run-o4b: #008300;
+  --run-o4c: #898781;
+  --viz-bg: #fcfcfb;
+  --viz-ink: #0b0b0b;
+  --viz-ink2: #52514e;
+  --viz-muted: #898781;
+  --viz-grid: #e1e0d9;
+  --viz-axis: #c3c2b7;
+  --viz-ring: #0b0b0b1a;
+  --viz-neutral: #f0efec;
+  --viz-pos: #e34948;
+  --viz-neg: #2a78d6;
+  --viz-seq: #184f95;
+  --viz-good: #006300;
+  --viz-warn: #b86e00;
+  --seq-1: #d3e7f7;
+  --seq-2: #a9cdea;
+  --seq-3: #79afd9;
+  --seq-4: #4a8cc0;
+  --seq-5: #2b6a9c;
+  --seq-6: #1f4e79;
+  --terrain-1: #e2d6c9;
+  --terrain-2: #d2bfa9;
+  --terrain-3: #bfa488;
+  --terrain-4: #a08873;
+  --terrain-5: #7d6b69;
+  --terrain-6: #5b4a44;
+  --div-neg2: #2a78d6;
+  --div-neg1: #8db4e1;
+  --div-mid: #f0efec;
+  --div-pos1: #ea9c9a;
+  --div-pos2: #e34948;
+  --shadow-tooltip: 0 4px 14px #00000033;
+  color-scheme: light;
+}
+[data-theme="dark"] {
+  --surface: #0e1521;
+  --surface-raised: #1a2130;
+  --panel: #f4f2f0;
+  --on-panel: #2c1e10;
+  --ink: #f0efec;
+  --ink-muted: #a1a69c;
+  --ink-subtle: #7d8592;
+  --rule: #2c313b;
+  --border-strong: #6a778c;
+  --grid-fine: #1f3f5c;
+  --primary: #5bb8d4;
+  --on-primary: #0e1521;
+  --secondary: #e0706a;
+  --on-secondary: #0e1521;
+  --link: #be81f0;
+  --link-visited: #a06dc9;
+  --focus: #5bb8d4;
+  --tan: #c59565;
+  --rust: #972702;
+  --teal-bright: #14ad9c;
+  --magenta: #9f0774;
+  --lime: #35ea86;
+  --purple: #bd77de;
+  --sky: #96befc;
+  --ice: #a3def0;
+  --ocean: #145b70;
+  --cat-1: #c98500;
+  --cat-2: #3987e5;
+  --cat-3: #d95926;
+  --cat-4: #9085e9;
+  --cat-5: #008300;
+  --cat-6: #e66767;
+  --cat-other: #898781;
+  --gold: #c98500;
+  --blue: #3987e5;
+  --orange: #d95926;
+  --indigo: #9085e9;
+  --green: #008300;
+  --red: #e66767;
+  --grey: #898781;
+  --on-gold: #0e1521;
+  --on-blue: #0e1521;
+  --on-orange: #0e1521;
+  --on-indigo: #0e1521;
+  --on-green: #ffffff;
+  --on-red: #0e1521;
+  --run-o1: #e66767;
+  --run-o2: #d95926;
+  --run-o3a: #9085e9;
+  --run-o3b: #3987e5;
+  --run-o4a: #c98500;
+  --run-o4b: #008300;
+  --run-o4c: #898781;
+  --viz-bg: #1a1e26;
+  --viz-ink: #f0efec;
+  --viz-ink2: #c3c2b7;
+  --viz-muted: #898781;
+  --viz-grid: #2c313b;
+  --viz-axis: #3c4250;
+  --viz-ring: #ffffff1a;
+  --viz-neutral: #383d48;
+  --viz-pos: #e66767;
+  --viz-neg: #3987e5;
+  --viz-seq: #6da7ec;
+  --viz-good: #0ca30c;
+  --viz-warn: #fab219;
+  --seq-1: #1f4e79;
+  --seq-2: #2b6a9c;
+  --seq-3: #4a8cc0;
+  --seq-4: #79afd9;
+  --seq-5: #a9cdea;
+  --seq-6: #d3e7f7;
+  --terrain-1: #5b4a44;
+  --terrain-2: #7d6b69;
+  --terrain-3: #a08873;
+  --terrain-4: #bfa488;
+  --terrain-5: #d2bfa9;
+  --terrain-6: #e2d6c9;
+  --div-neg2: #3987e5;
+  --div-neg1: #386296;
+  --div-mid: #383d48;
+  --div-pos1: #8f5258;
+  --div-pos2: #e66767;
+  --shadow-tooltip: 0 4px 14px #00000066;
+  color-scheme: dark;
+}
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-pill: 999px;
+  --font-sans: "Lato", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "EB Garamond", Georgia, "Times New Roman", serif;
+  --font-mono: "Source Code Pro", SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+.site-display { font-family: var(--font-serif); font-size: 48px; line-height: 52px; font-weight: 400; font-style: italic; }
+.site-h2 { font-family: var(--font-serif); font-size: 33px; line-height: 40px; font-weight: 400; font-style: italic; }
+.site-h3 { font-family: var(--font-serif); font-size: 25px; line-height: 32px; font-weight: 400; font-style: italic; }
+.site-body { font-family: var(--font-sans); font-size: 16px; line-height: 24px; font-weight: 300; }
+.site-prose { font-family: var(--font-serif); font-size: 21px; line-height: 32px; font-weight: 400; }
+.site-caption { font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 400; }
+.site-figcaption { font-family: var(--font-serif); font-size: 16px; line-height: 22px; font-weight: 400; }
+.site-mono { font-family: var(--font-mono); font-size: 13px; line-height: 20px; font-weight: 400; }
+.slide-title { font-family: var(--font-serif); font-size: 88px; line-height: 96px; font-weight: 400; font-style: italic; }
+.slide-h1 { font-family: var(--font-serif); font-size: 64px; line-height: 72px; font-weight: 400; font-style: italic; }
+.slide-stat { font-family: var(--font-sans); font-size: 360px; line-height: 340px; font-weight: 900; font-style: italic; letter-spacing: -4px; }
+.slide-stat-label { font-family: var(--font-sans); font-size: 64px; line-height: 76px; font-weight: 300; }
+.slide-body { font-family: var(--font-sans); font-size: 40px; line-height: 56px; font-weight: 300; }
+.slide-emphasis { font-family: var(--font-sans); font-size: 40px; line-height: 56px; font-weight: 700; }
+.slide-table { font-family: var(--font-sans); font-size: 36px; line-height: 52px; font-weight: 400; }
+.slide-ref { font-family: var(--font-mono); font-size: 26px; line-height: 34px; font-weight: 400; }

@@ -1,0 +1,19 @@
+<!-- @dsCard group="Charts" height=430 subtitle="Run, sequential and diverging colour" -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&family=Lato:ital,wght@0,300;0,400;0,700;1,900&family=Source+Code+Pro:wght@400&display=swap">
+<style>
+body{margin:0;background:var(--surface);color:var(--ink);font-family:var(--font-sans)}
+.card{background:var(--surface-raised);border-radius:var(--radius-lg);padding:16px;margin:0;position:relative}
+.cap{font:400 14px/20px var(--font-sans);color:var(--ink-muted);margin:8px 0 0}
+svg text{font-family:var(--font-sans)}
+.wrap{padding:16px;display:grid;gap:20px}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.sw{width:84px;font:400 12px/16px var(--font-mono);color:var(--ink-muted)}.sw i{display:block;height:40px;border-radius:4px;margin-bottom:4px}
+.ramp{display:flex;border-radius:4px;overflow:hidden;height:32px}.ramp i{flex:1}
+h4{font:400 12px/16px var(--font-mono);color:var(--ink-muted);margin:0 0 8px;text-transform:uppercase;letter-spacing:.06em}
+
+</style></head><body><div class="wrap">
+<div><h4>Observing runs</h4><div class="row">
+<div class="sw"><i style="background:var(--run-o1)"></i>O1</div><div class="sw"><i style="background:var(--run-o2)"></i>O2</div><div class="sw"><i style="background:var(--run-o3a)"></i>O3a</div><div class="sw"><i style="background:var(--run-o3b)"></i>O3b</div><div class="sw"><i style="background:var(--run-o4a)"></i>O4a</div><div class="sw"><i style="background:var(--run-o4b)"></i>O4b</div><div class="sw"><i style="background:transparent;border:2px dashed var(--run-o4c);box-sizing:border-box"></i>O4c</div></div></div>
+<div><h4>Sequential</h4><div class="ramp"><i style="background:var(--seq-1)"></i><i style="background:var(--seq-2)"></i><i style="background:var(--seq-3)"></i><i style="background:var(--seq-4)"></i><i style="background:var(--seq-5)"></i><i style="background:var(--seq-6)"></i></div></div>
+<div><h4>Terrain (from the map tiles)</h4><div class="ramp"><i style="background:var(--terrain-1)"></i><i style="background:var(--terrain-2)"></i><i style="background:var(--terrain-3)"></i><i style="background:var(--terrain-4)"></i><i style="background:var(--terrain-5)"></i><i style="background:var(--terrain-6)"></i></div></div>
+<div><h4>Diverging</h4><div class="ramp"><i style="background:var(--div-neg2)"></i><i style="background:var(--div-neg1)"></i><i style="background:var(--div-mid)"></i><i style="background:var(--div-pos1)"></i><i style="background:var(--div-pos2)"></i></div></div></div></body></html>

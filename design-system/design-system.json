@@ -1,0 +1,94 @@
+{
+ "v": 3,
+ "layout": "files",
+ "createdOnFiles": {
+  "v": 1,
+  "at": "2026-10-29T17:30:00Z"
+ },
+ "title": "Kentigern",
+ "namespace": "Kentigern",
+ "libraries": [],
+ "sections": {},
+ "groups": [
+  "Logo",
+  "Icons",
+  "Charts"
+ ],
+ "assetGroups": {
+  "Charts": {
+   "name": "Charts",
+   "tile": "m",
+   "order": [],
+   "files": {}
+  },
+  "Logo": {
+   "name": "Logo",
+   "tile": "m",
+   "order": [
+    "wordmark-light.svg",
+    "wordmark-dark.svg",
+    "mark-light.svg",
+    "mark-dark.svg",
+    "favicon.svg"
+   ],
+   "files": {
+    "wordmark-light.svg": {
+     "name": "wordmark-light.svg",
+     "blob": "957a99e2f1afe40934c98be1839f9873",
+     "size": 18618,
+     "type": "image/svg+xml"
+    },
+    "wordmark-dark.svg": {
+     "name": "wordmark-dark.svg",
+     "blob": "93a22feef9e82bff890f6bccb2c71190",
+     "size": 18616,
+     "type": "image/svg+xml"
+    },
+    "mark-light.svg": {
+     "name": "mark-light.svg",
+     "blob": "dc3e3f5ddc719d9a5bd625dccdf3b87c",
+     "size": 688,
+     "type": "image/svg+xml"
+    },
+    "mark-dark.svg": {
+     "name": "mark-dark.svg",
+     "blob": "7abbaebd86748a9806668d697f5977a1",
+     "size": 686,
+     "type": "image/svg+xml"
+    },
+    "favicon.svg": {
+     "name": "favicon.svg",
+     "blob": "adbddea80879cb2ac7641dd8adf598e8",
+     "size": 3479,
+     "type": "image/svg+xml"
+    }
+   }
+  },
+  "Icons": {
+   "name": "Icons",
+   "tile": "s",
+   "order": [
+    "cone.svg"
+   ],
+   "files": {
+    "cone.svg": {
+     "name": "cone.svg",
+     "blob": "fe766d7ee1a98f7fa9f843d95f822166",
+     "size": 399,
+     "type": "image/svg+xml"
+    }
+   }
+  }
+ },
+ "blobs": {},
+ "docs": {
+  "readme": "project/README.md",
+  "sections": []
+ },
+ "lastChange": {
+  "by": "Daniel Williams",
+  "at": "2026-10-30T13:00:00Z",
+  "via": "Claude Code",
+  "note": "Added business card and print guide"
+ }
+}

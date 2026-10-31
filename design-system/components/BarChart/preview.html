@@ -1,0 +1,22 @@
+<!-- @dsCard group="Charts" height=420 subtitle="Binary black hole candidates per run, coloured by run" -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&family=Lato:ital,wght@0,300;0,400;0,700;1,900&family=Source+Code+Pro:wght@400&display=swap">
+<style>
+body{margin:0;background:var(--surface);color:var(--ink);font-family:var(--font-sans)}
+.card{background:var(--surface-raised);border-radius:var(--radius-lg);padding:16px;margin:0;position:relative}
+.cap{font:400 14px/20px var(--font-sans);color:var(--ink-muted);margin:8px 0 0}
+svg text{font-family:var(--font-sans)}.wrap{padding:16px}
+.fc{font:400 16px/22px var(--font-serif);color:var(--ink)}.fc b{font-weight:700}
+</style></head><body><div class="wrap"><figure class="card" id="c" style="margin:0"><svg id="s" viewBox="0 0 720 320" width="100%" role="img" aria-label="Number of binary black hole candidates per observing run"></svg>
+<figcaption class="cap fc"><b>Figure 1:</b> BBH candidates per observing run, from the GWTC scorecard. O4c is partial (special event papers only).</figcaption></figure></div><script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script><script src="../../assets/Charts/kentigern-d3.js"></script><script>
+var data=[['O1',3],['O2',7],['O3a',42],['O3b',31],['O4a',128],['O4b',161],['O4c',2]];
+var m={t:16,r:16,b:32,l:44},W=720,H=320,K=Kentigern;
+var svg=d3.select('#s'),x=d3.scaleBand().domain(data.map(d=>d[0])).range([m.l,W-m.r]).padding(.28),y=d3.scaleLinear().domain([0,180]).range([H-m.b,m.t]);
+K.grid(svg.append('g').call(d3.axisLeft(y).ticks(4).tickSize(-(W-m.l-m.r)).tickFormat('')).attr('transform','translate('+m.l+',0)'));
+K.axis(svg.append('g').attr('transform','translate('+m.l+',0)').call(d3.axisLeft(y).ticks(4)),{noLine:true});
+K.axis(svg.append('g').attr('transform','translate(0,'+(H-m.b)+')').call(d3.axisBottom(x).tickSizeOuter(0)));
+var tip=K.tooltip(document.getElementById('c'));
+svg.selectAll('.b').data(data).join('rect').attr('x',d=>x(d[0])).attr('width',x.bandwidth()).attr('y',d=>y(d[1])).attr('height',d=>y(0)-y(d[1])).attr('rx',2)
+ .attr('fill',d=>d[0]==='O4c'?'none':K.run(d[0])).attr('stroke',d=>d[0]==='O4c'?K.run(d[0]):'none').attr('stroke-width',2).attr('stroke-dasharray',d=>d[0]==='O4c'?'4 3':null)
+ .on('mousemove',(e,d)=>tip.show('<b style="color:'+K.run(d[0])+'">'+d[0]+'</b> · '+d[1]+' BBH',e)).on('mouseleave',()=>tip.hide());
+svg.selectAll('.v').data(data).join('text').attr('x',d=>x(d[0])+x.bandwidth()/2).attr('y',d=>y(d[1])-6).attr('text-anchor','middle').attr('font-size',12).attr('fill',K.css('ink')).text(d=>d[1]);
+</script></body></html>

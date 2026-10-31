@@ -1,0 +1,27 @@
+<!-- @dsCard group="Social" height=1374 width=1200 subtitle="Shareable chart card, 1200 x 675, light and dark" -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&family=Lato:ital,wght@0,300;0,400;0,700;1,900&family=Source+Code+Pro:wght@400&display=swap"><style>
+body{margin:0;background:var(--surface);color:var(--ink);font-family:var(--font-sans)}
+
+.stack{display:flex;flex-direction:column;gap:24px;padding:0}
+.card{width:1200px;height:675px;position:relative;overflow:hidden;box-sizing:border-box;background-color:var(--surface);color:var(--ink)}
+.card::before{content:"";position:absolute;inset:0;opacity:.6;background-image:linear-gradient(var(--grid-fine) 1px,transparent 1px),linear-gradient(90deg,var(--grid-fine) 1px,transparent 1px);background-size:24px 24px;background-position:12px 12px}
+/* 1200 x 675: tab, headline, subtitle, chart, source line */
+.tab{position:absolute;left:48px;top:-12px;width:72px;height:96px}
+.h{position:absolute;left:48px;top:112px;width:1000px;margin:0;font:italic 400 52px/58px var(--font-serif)}
+.sub{position:absolute;left:48px;top:236px;margin:0;font:300 26px/32px var(--font-sans);color:var(--ink-muted)}
+.chart{position:absolute;left:48px;top:292px;width:1104px;height:300px}
+.src{position:absolute;left:48px;bottom:28px;font:400 18px/24px var(--font-mono);color:var(--ink-muted)}
+.url{position:absolute;right:48px;bottom:28px;font:400 18px/24px var(--font-mono);color:var(--ink)}
+
+</style></head><body><div class="stack"><div class="card" id="c1"><svg class="tab" viewBox="0 0 56 56" role="img" aria-label="Daniel Williams"><defs><mask id="tm1" maskUnits="userSpaceOnUse" x="0" y="0" width="56" height="56"><rect width="56" height="56" fill="#fff"/><circle cx="38" cy="38" r="7" fill="none" stroke="#000" stroke-width="3"/><circle cx="38" cy="38" r="15" fill="none" stroke="#000" stroke-width="3"/><circle cx="38" cy="38" r="23" fill="none" stroke="#000" stroke-width="3"/><circle cx="38" cy="38" r="31" fill="none" stroke="#000" stroke-width="3"/></mask></defs><rect width="56" height="56" rx="8" style="fill:var(--primary)" mask="url(#tm1)"/></svg><h1 class="h">O4b added 161 binary black hole candidates</h1><p class="sub">BBH candidates per observing run</p><svg class="chart" id="s1" viewBox="0 0 1104 300"></svg><span class="src">Source: LVK GWTC scorecard, O1 to O4c</span><span class="url">daniel-williams.co.uk</span></div><div class="card" id="c2" data-theme="dark"><svg class="tab" viewBox="0 0 56 56" role="img" aria-label="Daniel Williams"><defs><mask id="tm2" maskUnits="userSpaceOnUse" x="0" y="0" width="56" height="56"><rect width="56" height="56" fill="#fff"/><circle cx="38" cy="38" r="7" fill="none" stroke="#000" stroke-width="3"/><circle cx="38" cy="38" r="15" fill="none" stroke="#000" stroke-width="3"/><circle cx="38" cy="38" r="23" fill="none" stroke="#000" stroke-width="3"/><circle cx="38" cy="38" r="31" fill="none" stroke="#000" stroke-width="3"/></mask></defs><rect width="56" height="56" rx="8" style="fill:var(--primary)" mask="url(#tm2)"/></svg><h1 class="h">O4b added 161 binary black hole candidates</h1><p class="sub">BBH candidates per observing run</p><svg class="chart" id="s2" viewBox="0 0 1104 300"></svg><span class="src">Source: LVK GWTC scorecard, O1 to O4c</span><span class="url">daniel-williams.co.uk</span></div></div><script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script><script src="../../assets/Charts/kentigern-d3.js"></script><script>
+var data=[['O1',3],['O2',7],['O3a',42],['O3b',31],['O4a',128],['O4b',161],['O4c',2]],K=Kentigern;
+function draw(i){var el=document.getElementById('c'+i);K.scope(el);
+ var W=1104,H=300,m={t:32,r:8,b:40,l:56},svg=d3.select('#s'+i),x=d3.scaleBand().domain(data.map(d=>d[0])).range([m.l,W-m.r]).padding(.3),y=d3.scaleLinear().domain([0,180]).range([H-m.b,m.t]);
+ var ax=svg.append('g').attr('transform','translate('+m.l+',0)').call(d3.axisLeft(y).tickValues([0,50,100,150]));K.axis(ax,{noLine:true}).selectAll('text').attr('font-size',18);
+ var bx=svg.append('g').attr('transform','translate(0,'+(H-m.b)+')').call(d3.axisBottom(x).tickSizeOuter(0));K.axis(bx).selectAll('text').attr('font-size',18);
+ svg.selectAll('.b').data(data).join('rect').attr('x',d=>x(d[0])).attr('width',x.bandwidth()).attr('y',d=>y(d[1])).attr('height',d=>y(0)-y(d[1])).attr('rx',2)
+  .attr('fill',d=>d[0]==='O4c'?'none':K.run(d[0])).attr('stroke',d=>d[0]==='O4c'?K.run(d[0]):'none').attr('stroke-width',2).attr('stroke-dasharray',d=>d[0]==='O4c'?'5 4':null);
+ svg.selectAll('.v').data(data).join('text').attr('x',d=>x(d[0])+x.bandwidth()/2).attr('y',d=>y(d[1])-8).attr('text-anchor','middle').attr('font-size',22).attr('font-weight',700).attr('fill',K.css('ink')).attr('font-family',K.css('font-sans')).text(d=>d[1]);
+ K.scope(null);}
+draw(1);draw(2);
+</script></body></html>
