@@ -8,7 +8,9 @@
 tokens.json is the single source of truth. Colour values are hex or {alias}; each colour
 has a value per theme ("light", "dark").
 """
-import json, re, sys
+import json
+import re
+import sys
 from pathlib import Path
 
 HERE = Path(__file__).parent
@@ -31,7 +33,7 @@ def hexrgb(h):
 
 
 def css():
-    out = [f"/* Kentigern: generated from tokens.json by build.py. Do not edit. */"]
+    out = ["/* Kentigern: generated from tokens.json by build.py. Do not edit. */"]
     for theme in THEMES:
         sel = f':root, [data-theme="{theme}"]' if theme == FIRST else f'[data-theme="{theme}"]'
         lines = [f"  --{n}: {val(n, theme)};" for n in COLORS]
@@ -47,15 +49,24 @@ def css():
     for g in T["type"]["groups"]:
         for s in g["styles"]:
             fam = s.get("family", g["family"])
-            rules = [f"font-family: var(--font-{fam});", f"font-size: {s['fontSize']};", f"line-height: {s['lineHeight']};", f"font-weight: {s['fontWeight']};"]
-            if s.get("fontStyle"): rules.append(f"font-style: {s['fontStyle']};")
-            if s.get("letterSpacing"): rules.append(f"letter-spacing: {s['letterSpacing']};")
+            rules = [
+                f"font-family: var(--font-{fam});",
+                f"font-size: {s['fontSize']};",
+                f"line-height: {s['lineHeight']};",
+                f"font-weight: {s['fontWeight']};",
+            ]
+            if s.get("fontStyle"):
+                rules.append(f"font-style: {s['fontStyle']};")
+            if s.get("letterSpacing"):
+                rules.append(f"letter-spacing: {s['letterSpacing']};")
             out.append(f".{s['name']} {{ " + " ".join(rules) + " }")
     return "\n".join(out) + "\n"
 
 
 def mpl(theme):
-    g = lambda n: val(n, theme).lstrip("#")[:6]
+    def g(n):
+        return val(n, theme).lstrip("#")[:6]
+
     cycle = [g(f"cat-{i}") for i in range(1, 7)]
     return f"""# Kentigern matplotlib style ({theme}): generated from tokens.json by build.py. Do not edit.
 # Use:  plt.style.use("kentigern-{theme}.mplstyle")
@@ -116,13 +127,22 @@ def sty():
     return "\n".join(L) + "\n"
 
 
-OUT = {"dist/tokens.css": css(), "dist/kentigern-light.mplstyle": mpl("light"), "dist/kentigern-dark.mplstyle": mpl("dark"), "dist/kentigern-tokens.sty": sty()}
+OUT = {
+    "dist/tokens.css": css(),
+    "dist/kentigern-light.mplstyle": mpl("light"),
+    "dist/kentigern-dark.mplstyle": mpl("dark"),
+    "dist/kentigern-tokens.sty": sty(),
+}
 if __name__ == "__main__":
     bad = 0
     for p, s in OUT.items():
         f = HERE / p
         if "--check" in sys.argv:
-            if not f.exists() or f.read_text() != s: print("stale:", p); bad = 1
+            if not f.exists() or f.read_text() != s:
+                print("stale:", p)
+                bad = 1
         else:
-            f.parent.mkdir(exist_ok=True); f.write_text(s); print("wrote", p)
+            f.parent.mkdir(exist_ok=True)
+            f.write_text(s)
+            print("wrote", p)
     sys.exit(bad)

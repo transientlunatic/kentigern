@@ -12,6 +12,10 @@ Slides are 1920 × 1080 (16:9), `dark` theme (put `data-theme="dark"` on the sli
 
 - **Thanks.** "Thanks!" in `slide-title`, the site address in mono in `primary`, a QR code on a `panel` tile, and the Glasgow footer: the Wellington cone and "Glasgow · 55.86° N, 4.25° W" in mono.
 
+## LaTeX Beamer
+
+The same slides exist as a Beamer theme (`latex/beamer/` in the repository): `\usetheme{kentigern}` with XeLaTeX or LuaLaTeX, plus `\kentigernstat`, `\kentigernpanel`, `\kentigernref` and `\kentigernthanks` for the layouts above.
+
 ## Glasgow and the address
 
 The system is named for St Kentigern (Mungo), Glasgow's patron saint. The one visible nod is the footer on the thanks slide: the traffic cone from the Duke of Wellington statue, in `orange`, beside the coordinates. It is the only icon allowed on a slide. The title slide carries `daniel-williams.co.uk` as the last presenter line, in mono. No other slide gets a URL footer; the bottom-left is for footnotes.

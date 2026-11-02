@@ -1,0 +1,80 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tokens:
+    name: Tokens and design system
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # generated outputs are current, the artifact mirror matches, aliases resolve,
+      # documented contrast pairs hold, previews only use real tokens
+      - run: make check
+
+  python:
+    name: Python lint and tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+      - run: pip install -r requirements-dev.txt
+      - run: make lint
+      - run: make test
+
+  beamer:
+    name: Beamer example deck
+    runs-on: ubuntu-latest
+    env:
+      SCP_URL: https://github.com/adobe-fonts/source-code-pro/releases/download/2.042R-u%2F1.062R-i%2F1.026R-vf/OTF-source-code-pro-2.042R-u_1.062R-i.zip
+      SCP_SHA256: 754a2e3ebb945ae905d720ac5896b3b34acc9546dd6551ef9536869788629dae
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install TeX and fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            texlive-xetex texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended \
+            texlive-pictures fonts-lato fonts-ebgaramond fontconfig poppler-utils
+          curl -fsSL -o scp.zip "$SCP_URL"
+          echo "$SCP_SHA256  scp.zip" | sha256sum -c -
+          mkdir -p ~/.fonts
+          unzip -qo scp.zip 'OTF/SourceCodePro-*.otf' -d ~/.fonts
+          fc-cache -f
+          fc-list | grep -E "Lato|EB Garamond|Source Code Pro" | sort | head
+      - run: make beamer
+      - run: make beamer-light
+      - name: Check page counts
+        run: |
+          for f in latex/beamer/example.pdf latex/beamer/example-light.pdf; do
+            n=$(pdfinfo "$f" | awk '/^Pages:/ {print $2}')
+            echo "$f: $n pages"
+            test "$n" -eq 6
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: beamer-example
+          path: |
+            latex/beamer/example.pdf
+            latex/beamer/example-light.pdf

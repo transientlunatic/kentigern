@@ -12,6 +12,7 @@ The browsable reference is a Claude design-system artifact: https://claude.ai/ar
 | `tokens/dist/` | Generated: `tokens.css` (custom properties, `light` and `dark` themes), `kentigern-light.mplstyle` / `kentigern-dark.mplstyle`, `kentigern-tokens.sty` (LaTeX colours). |
 | `tokens/legacy/` | The earlier hand-written SCSS and TeX tokens, copied from the blog's vendored `_webpack/kentigern-tokens`. Kept until the blog is moved onto `dist/`. |
 | `design-system/` | A mirror of the artifact: brand book (`README.md`, `charts.md`, `slides.md`, `social.md`, `print.md`), component previews, logo and icon assets, the d3 helper, and the artifact's own `design-system.json` index. |
+| `latex/beamer/` | Beamer theme (`\usetheme{kentigern}`), an example deck and a preview image. |
 | `charts/` | Python helper `kentigern_mpl.py` and `example.py`; renders `example-light.png` / `example-dark.png`. |
 
 ## Use
@@ -34,6 +35,10 @@ colour = kn.run_colour("o4b")
 \kentigernhypersetup
 ```
 
+## Checks
+
+`make check` (generated outputs current, artifact mirror matches, aliases resolve, documented contrast pairs hold, previews use only real tokens), `make lint` (ruff), `make test` (pytest) and `make beamer` (builds the example deck with XeLaTeX) run in GitHub Actions on every push and pull request (`.github/workflows/ci.yml`). Install the Python dependencies with `pip install -r requirements-dev.txt`.
+
 ## Changing the system
 
 1. Edit `tokens/tokens.json` (colours, type, spacing, radii) or the guides in `design-system/`.
@@ -48,8 +53,8 @@ The 2016 `kentigern.cls` that lived here has been removed (it remains in git his
 ## Status and known gaps
 
 - `kentigern-tokens` is not yet a submodule: the repository could not be reached from the session that set this up, so `tokens/` is an ordinary directory that moves into it unchanged.
-- `kentigern-tokens.sty` is generated but has not been compiled (no TeX in the build environment).
-- No `.pptx` template yet; slides exist as HTML previews and a guide.
+- `kentigern-tokens.sty` compiles (the Beamer theme builds on it), but the thesis class has not been moved onto it yet.
+- No `.pptx` template yet; slides exist as HTML previews, a guide and a Beamer theme.
 - The favicon is SVG only; no PNG or ICO exports.
 - Logo outlines are from EB Garamond Italic (SIL Open Font License).
 
