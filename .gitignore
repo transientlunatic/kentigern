@@ -11,3 +11,4 @@ __pycache__/
 *.fdb_latexmk
 *.xdv
 latex/**/*.pdf
+latex/beamer/example-light.tex

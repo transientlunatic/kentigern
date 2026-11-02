@@ -35,6 +35,10 @@ colour = kn.run_colour("o4b")
 \kentigernhypersetup
 ```
 
+## Checks
+
+`make check` (generated outputs current, artifact mirror matches, aliases resolve, documented contrast pairs hold, previews use only real tokens), `make lint` (ruff), `make test` (pytest) and `make beamer` (builds the example deck with XeLaTeX) run in GitHub Actions on every push and pull request (`.github/workflows/ci.yml`). Install the Python dependencies with `pip install -r requirements-dev.txt`.
+
 ## Changing the system
 
 1. Edit `tokens/tokens.json` (colours, type, spacing, radii) or the guides in `design-system/`.
