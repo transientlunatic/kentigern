@@ -1,0 +1,201 @@
+% beamerthemekentigern.sty: the Kentigern Beamer theme.
+% Slides follow design-system/slides.md: dark by default, serif italic titles,
+% Lato Light body, Source Code Pro for references, one loud stat slide.
+%
+%   \usetheme{kentigern}          % dark (default)
+%   \usetheme[light]{kentigern}   % Parchment ground
+%
+% Needs XeLaTeX or LuaLaTeX (fontspec) with EB Garamond, Lato and Source Code Pro
+% installed, and kentigern-tokens.sty (tokens/dist) on the TeX path. pdfLaTeX works
+% but falls back to the fonts it can find.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemekentigern}[2026/11/02 Kentigern Beamer theme]
+
+\RequirePackage{kentigern-tokens}
+\RequirePackage{iftex}
+\RequirePackage{etoolbox}
+\RequirePackage{tikz}
+
+\newif\ifkn@light \kn@lightfalse
+\DeclareOptionBeamer{light}{\kn@lighttrue}
+\DeclareOptionBeamer{dark}{\kn@lightfalse}
+\ProcessOptionsBeamer
+
+% ---- Colours: every value comes from the tokens ---------------------------------
+\ifkn@light
+  \colorlet{kn@bg}{knSurface}          \colorlet{kn@raised}{knSurfaceRaised}
+  \colorlet{kn@ink}{knInk}             \colorlet{kn@muted}{knInkMuted}
+  \colorlet{kn@primary}{knPrimary}     \colorlet{kn@onprimary}{knOnPrimary}
+  \colorlet{kn@rule}{knRule}           \colorlet{kn@link}{knLink}
+  \colorlet{kn@alert}{knSecondary}
+  \colorlet{kn@panel}{knPanel}         \colorlet{kn@onpanel}{knOnPanel}
+  \colorlet{kn@gold}{knGold}           \colorlet{kn@ongold}{knOnGold}
+  \colorlet{kn@red}{knRed}             \colorlet{kn@onred}{knOnRed}
+  \colorlet{kn@blue}{knBlue}           \colorlet{kn@onblue}{knOnBlue}
+  \colorlet{kn@indigo}{knIndigo}       \colorlet{kn@green}{knGreen}
+  \colorlet{kn@ocean}{knOcean}
+\else
+  \colorlet{kn@bg}{knSurfaceDark}      \colorlet{kn@raised}{knSurfaceRaisedDark}
+  \colorlet{kn@ink}{knInkDark}         \colorlet{kn@muted}{knInkMutedDark}
+  \colorlet{kn@primary}{knPrimaryDark} \colorlet{kn@onprimary}{knOnPrimaryDark}
+  \colorlet{kn@rule}{knRuleDark}       \colorlet{kn@link}{knLinkDark}
+  \colorlet{kn@alert}{knSecondaryDark}
+  \colorlet{kn@panel}{knPanelDark}     \colorlet{kn@onpanel}{knOnPanelDark}
+  \colorlet{kn@gold}{knGoldDark}       \colorlet{kn@ongold}{knOnGoldDark}
+  \colorlet{kn@red}{knRedDark}         \colorlet{kn@onred}{knOnRedDark}
+  \colorlet{kn@blue}{knBlueDark}       \colorlet{kn@onblue}{knOnBlueDark}
+  \colorlet{kn@indigo}{knIndigoDark}   \colorlet{kn@green}{knGreenDark}
+  \colorlet{kn@ocean}{knOcean}
+\fi
+
+% ---- Fonts ------------------------------------------------------------------------
+% \knserif: EB Garamond (headings, italic). \knsans: Lato Light. \knmono: Source Code Pro.
+\ifPDFTeX
+  \RequirePackage[T1]{fontenc}
+  \newcommand{\knserif}{\rmfamily}
+  \newcommand{\knsans}{\sffamily}
+  \newcommand{\knmono}{\ttfamily}
+  \newcommand{\knblack}{\bfseries}
+\else
+  \RequirePackage{fontspec}
+  \setmainfont{EB Garamond}[Numbers=Lining]
+  \setsansfont{Lato}[UprightFont={* Light},ItalicFont={* Light Italic},BoldFont={* Bold},BoldItalicFont={* Bold Italic}]
+  \setmonofont{Source Code Pro}[Scale=0.9]
+  \newfontfamily\knblack{Lato Black}[ItalicFont={Lato Black Italic},BoldFont={Lato Black},BoldItalicFont={Lato Black Italic}]
+  \newcommand{\knserif}{\rmfamily}
+  \newcommand{\knsans}{\sffamily}
+  \newcommand{\knmono}{\ttfamily}
+\fi
+\usefonttheme{professionalfonts}
+\setbeamerfont{normal text}{family=\sffamily}
+\renewcommand{\familydefault}{\sfdefault}
+
+% ---- Beamer colours ----------------------------------------------------------------
+\setbeamercolor{normal text}{fg=kn@ink,bg=kn@bg}
+\setbeamercolor{background canvas}{bg=kn@bg}
+\setbeamercolor{frametitle}{fg=kn@ink,bg=kn@bg}
+\setbeamercolor{structure}{fg=kn@primary}
+\setbeamercolor{item}{fg=kn@primary}
+\setbeamercolor{itemize item}{fg=kn@primary}
+\setbeamercolor{itemize subitem}{fg=kn@muted}
+\setbeamercolor{enumerate item}{fg=kn@primary}
+\setbeamercolor{alerted text}{fg=kn@alert}
+\setbeamercolor{footline}{fg=kn@muted}
+\setbeamercolor{caption name}{fg=kn@muted}
+\setbeamercolor{footnote}{fg=kn@muted}
+\setbeamercolor{block title}{fg=kn@ink,bg=kn@raised}
+\setbeamercolor{block body}{fg=kn@ink,bg=kn@raised}
+\setbeamercolor{url}{fg=kn@link}
+\hypersetup{colorlinks=true,linkcolor=kn@link,urlcolor=kn@link,citecolor=kn@alert,filecolor=kn@link}
+
+% ---- Layout -------------------------------------------------------------------------
+% 16:9 slides are 160 x 90 mm; the guide's 96px margin at 1920 wide is 8 mm.
+\setbeamersize{text margin left=8mm,text margin right=8mm}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{itemize item}{\raisebox{0.2ex}{\scalebox{0.55}{\textbullet}}}
+\setbeamertemplate{itemize subitem}{--}
+\setbeamertemplate{blocks}[default]
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{bibliography item}{}
+
+% frame title: serif italic, top-left, one line, no rule or underline
+\setbeamertemplate{frametitle}{%
+  \vskip 6mm
+  {\knserif\itshape\fontsize{16}{18}\selectfont\color{kn@ink}\insertframetitle\par}%
+  \vskip 3mm}
+
+% footline: an optional reference then the slide number, bottom-right, in mono
+\newcommand{\kn@ref}{}
+\newcommand{\kentigernref}[1]{\gdef\kn@ref{#1}}
+\AtBeginEnvironment{frame}{\gdef\kn@ref{}}
+\setbeamertemplate{footline}{%
+  \leavevmode\hbox to\paperwidth{\hfill
+    {\usebeamercolor[fg]{footline}\knmono\fontsize{7}{9}\selectfont\color{fg}%
+      \ifx\kn@ref\@empty\else\kn@ref\hspace{4mm}\fi\insertframenumber}%
+    \hspace*{8mm}}%
+  \vskip 4.5mm}
+
+% ---- Ripple arcs (title slide) -----------------------------------------------------
+\newcommand{\kentigernripples}{%
+  \begin{tikzpicture}[remember picture,overlay,line width=0.35pt]
+    \foreach \r/\c in {16mm/kn@primary,26.7mm/kn@indigo,37.3mm/kn@gold,48mm/kn@green,58.7mm/kn@rule}{%
+      \draw[\c] (current page.south east) circle (\r);}
+  \end{tikzpicture}}
+
+% ---- Title slide ---------------------------------------------------------------------
+\newcommand{\kn@url}{daniel-williams.co.uk}
+\newcommand{\kentigernurl}[1]{\renewcommand{\kn@url}{#1}}
+\setbeamertemplate{title page}{%
+  \kentigernripples
+  \vbox to 0.78\textheight{%
+    \vspace*{16mm}%
+    {\knserif\itshape\fontsize{21}{23}\selectfont\color{kn@ink}\inserttitle\par}%
+    \vskip 4mm
+    {\knsans\fontsize{11}{15}\selectfont\color{kn@muted}\insertsubtitle\par}%
+    \vfill
+    {\knsans\fontsize{9}{13}\selectfont\color{kn@ink}\textbf{\insertauthor}\par
+     \color{kn@muted}\insertinstitute\par
+     {\knmono\fontsize{7}{10}\selectfont\kn@url\par}}%
+  }}
+
+% ---- Stat slide: one big number on a coloured ground -----------------------------
+% \kentigernstat[gold|red|blue]{291}{New candidates (O4a+O4b)}
+\newcommand{\kentigernstat}[3][gold]{%
+  {\colorlet{kn@statbg}{kn@#1}\colorlet{kn@statfg}{kn@on#1}%
+   \setbeamercolor{background canvas}{bg=kn@statbg}%
+   \setbeamercolor{footline}{fg=kn@statfg}%
+   \begin{frame}[plain]
+     \centering\color{kn@statfg}\vfill
+     {\knblack\itshape\fontsize{85}{80}\selectfont #2\par}
+     \vskip 2mm
+     {\knsans\fontsize{16}{20}\selectfont #3\par}
+     \vfill
+   \end{frame}}}
+
+% ---- Figure tile: a published figure on a light panel -----------------------------
+\newcommand{\kentigernpanel}[1]{%
+  \begin{tikzpicture}
+    \node[fill=kn@panel,rounded corners=1.3mm,inner sep=3mm,text=kn@onpanel]{#1};
+  \end{tikzpicture}}
+
+% ---- Glasgow: the Wellington cone and the coordinates ----------------------------------
+\newcommand{\kentigernconesmall}{%
+  \begin{tikzpicture}[x=0.14mm,y=-0.14mm,baseline=(base.south)]
+    \coordinate (base) at (0,32);
+    \fill[kn@muted!70] (2,26) rectangle (22,30);
+    \fill[kn@orange] (10,3) -- (14,3) -- (19,26) -- (5,26) -- cycle;
+    \fill[kn@panel] (9.2,10) -- (14.8,10) -- (15.7,13.5) -- (8.3,13.5) -- cycle;
+    \fill[kn@panel] (7.4,17) -- (16.6,17) -- (17.5,20.5) -- (6.5,20.5) -- cycle;
+  \end{tikzpicture}}
+\ifkn@light\colorlet{kn@orange}{knOrange}\else\colorlet{kn@orange}{knOrangeDark}\fi
+\newcommand{\kentigerngeo}{%
+  {\knmono\fontsize{6}{8}\selectfont\color{kn@muted}\kentigernconesmall\hspace{2mm}Glasgow $\cdot$ 55.86$^\circ$\,N, 4.25$^\circ$\,W}}
+
+% ---- Closing slide ---------------------------------------------------------------------------
+% \kentigernthanks{daniel-williams.co.uk}   or with a QR image: \kentigernthanks[qr-site.png]{...}
+\newcommand{\kn@qrfile}{}
+\newcommand{\kn@qrblock}{%
+  \ifx\kn@qrfile\@empty\else
+    \begin{minipage}[t]{0.3\textwidth}\raggedleft
+      \kentigernpanel{\includegraphics[width=24mm]{\kn@qrfile}}%
+    \end{minipage}%
+  \fi}
+\newcommand{\kentigernthanks}[2][]{%
+  \gdef\kn@qrfile{#1}%
+  \begin{frame}[plain]
+    \vspace*{18mm}
+    \begin{minipage}[t]{0.58\textwidth}
+      {\knserif\itshape\fontsize{28}{30}\selectfont Thanks!\par}
+      \vskip 3mm
+      {\knsans\fontsize{11}{15}\selectfont\color{kn@muted}Papers, code and the hill log are at\par}
+      \vskip 1mm
+      {\knmono\fontsize{11}{15}\selectfont\color{kn@primary}#2\par}
+    \end{minipage}\hfill
+    \kn@qrblock
+    \vfill
+    \kentigerngeo
+    \vspace*{1mm}
+  \end{frame}}
+
+\endinput
